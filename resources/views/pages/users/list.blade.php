@@ -29,7 +29,7 @@
                                     <th scope="col" class="px-6 py-3 text-center" width="15%">
                                         <button 
                                             type="button"
-                                            onclick="createUser()"
+                                            onclick="formUser()"
                                             class="border border-gray-200 px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 inline-flex items-center">
                                             Novo Usuário
                                         </button>
@@ -54,7 +54,7 @@
                                     <td class="px-6 py-4">
                                         <button 
                                             type="button"
-                                            onclick="updateUser({{ $user->id }})"
+                                            onclick="formUser({{ $user->id }})"
                                             class="border border-gray-200 px-2 py-1 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 inline-flex items-center">
                                             Editar
                                         </button>
@@ -79,52 +79,84 @@
     <x-form-modal></x-form-modal>
 
     <script>
-        function createUser() {
-            document.querySelector('#form-modal-title').textContent = "Novo Usuário";
-            modal.show();
-
-            axios.get(`{{ route('user.create') }}`)
-            .then(function (response) {
-                document.querySelector('#form-modal-content').innerHTML = response.data;
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .finally(function () {
-                spinner.classList.add('hidden');
+        function preventSubmit(method = 'post') {
+            let form = document.getElementById('formUser');
+            form.addEventListener('submit', (ev) => {
+                ev.preventDefault();
+                saveUser(form, method);
             });
         }
 
-        function updateUser(id) {
-            document.querySelector('#form-modal-title').textContent = "Atualizar Usuário";
+        function formUser(id = null) {
+            let title = 'Novo Usuário';
+            let url = `{{ route('user.create') }}`;
+            let method = 'post';
+            if (id !== null) {
+                title = 'Atualizar Usuário';
+                url = `{{ url('/user') }}/${id}/edit`;
+                method = 'put';
+            }
+
+            document.querySelector('#form-modal-title').textContent = title;
             modal.show();
 
-            axios.get(`{{ url('/user') }}/${id}`)
-            .then(function (response) {
+            axios.get(url).then((response) => {
                 document.querySelector('#form-modal-content').innerHTML = response.data;
-            })
-            .catch(function (error) {
+            }).catch((error) => {
                 console.log(error);
-            })
-            .finally(function () {
+            }).finally(() => {
                 spinner.classList.add('hidden');
+                preventSubmit(method);
             });
         }
 
         function deleteUser(id) {
             document.querySelector('#form-modal-title').textContent = "Excluir  Usuário";
-            modal.show();
+            alert.show();
 
-            axios.delete(`{{ url('/user') }}/${id}`)
-            .then(function (response) {
-                document.querySelector('#form-modal-content').innerHTML = response.data;
-            })
-            .catch(function (error) {
+            // axios.delete(`{{ url('/user') }}/${id}`)
+            // .then(function (response) {
+            //     document.querySelector('#form-modal-content').innerHTML = response.data;
+            // })
+            // .catch(function (error) {
+            //     console.log(error);
+            // })
+            // .finally(function () {
+            //     spinner.classList.add('hidden');
+            // });
+        }
+
+        function saveUser(form) {
+            let formData = new FormData(form);
+            let url = `{{ url('/user') }}`;
+            let method = 'post';
+            
+            if (formData.get('id').trim().length > 0) {
+                url = `{{ url('/user') }}/` + formData.get('id'); 
+                method = 'put';
+            }
+
+            axios({
+                method: method,
+                url: url,
+                data: formToString(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
                 console.log(error);
-            })
-            .finally(function () {
-                spinner.classList.add('hidden');
             });
+
+        }
+
+        function formToString(formData) {
+            var object = {};
+            formData.forEach(function(value, key){
+                object[key] = value;
+            });
+            return JSON.stringify(object); 
         }
     </script>
 </x-app-layout>

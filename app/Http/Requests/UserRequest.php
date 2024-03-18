@@ -13,7 +13,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,25 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $validRequest = [
+            'name' => 'required|max:200',
+            'email' => 'required|email',
+            'birth_date' => 'required|date',
+            'sex' => 'in:M,F,N',
+            'permission' => 'in:A,P',
+            'status' => 'in:A,I',
+            'phone' => 'required',
+            'address' => '',
+            'zip_code' => 'required',
+            'city' => 'required',
         ];
+
+        $validaSenha = 'required|min:5|max:30';
+        if (strlen(request()->id) <= 0) {
+            $validRequest['email'] .= '|unique:users';
+            $validRequest['password'] = $validaSenha;
+        }
+
+        return $validRequest;
     }
 }

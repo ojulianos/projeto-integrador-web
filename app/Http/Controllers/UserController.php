@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -33,19 +34,27 @@ class UserController extends Controller
      */
     public function create()
     {
-        sleep(3);
-        return view('pages.users.form');
+        return view('pages.users.form', [
+            'user' => $this->users,
+            'form_action' => route('user.store')
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $user = $request->all();
+        $user['password'] = bcrypt($request->password);
+
+        if ($this->users->create($user)) {
+            return response(['message' => 'Usuário cadastrado', 'status' => true]);
+        }
+        return response(['message' => 'Usuário não cadastrado', 'status' => false]);
     }
 
     /**
@@ -67,19 +76,31 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.users.form', [
+            'user' => $this->users->find($id),
+            'form_action' => route('user.store')
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UserRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = $this->users->find($id);
+        
+        foreach ($request->except('_token') as $key => $value) {
+            $user->$key = $value;
+        }
+
+        if ($user->save()) {
+            return response(['message' => 'Usuário atualizado', 'status' => true]);
+        }
+        return response(['message' => 'Usuário não atualizado', 'status' => false]);
     }
 
     /**

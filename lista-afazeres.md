@@ -1,11 +1,11 @@
 
-[] traduzir templates
-[] criar tabela exemplo
-[] criar formulario exemplo
-[] criar migrations
-[] criar models
-[] criar controllers
-[] criar request validations
+[x] traduzir templates
+[x] criar tabela exemplo
+[x] criar formulario exemplo
+[x] criar migrations
+[x] criar models
+[x] criar controllers
+[x] criar request validations
 [] ajustar relacionamentos nos models
 [] ajustar javascript create
 [] ajustar javascript update

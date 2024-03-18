@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->char('sex', 1);
             $table->string('phone');
             $table->char('permission', 1);
-            $table->boolean('status');
+            $table->char('status', 1);
             $table->string('address');
             $table->string('zip_code');
             $table->string('zone');
