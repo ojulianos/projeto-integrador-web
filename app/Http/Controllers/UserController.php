@@ -111,6 +111,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->users->find($id);
+
+        if (auth()->user()->id == $id) {
+            return response(['message' => 'Você não pode excluir o usuário autenticado', 'status' => false]);
+        }
+
+        if ($user->delete()) {
+            return response(['message' => 'Usuário excluído', 'status' => true]);
+        }
+        return response(['message' => 'Usuário não excluído', 'status' => false]);
     }
 }

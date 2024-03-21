@@ -80,6 +80,7 @@
 
     <script>
         function preventSubmit(method = 'post') {
+            removeAllListeners('#formUser');
             let form = document.getElementById('formUser');
             form.addEventListener('submit', (ev) => {
                 ev.preventDefault();
@@ -98,7 +99,7 @@
             }
 
             document.querySelector('#form-modal-title').textContent = title;
-            modal.show();
+            formModal.show();
 
             axios.get(url).then((response) => {
                 document.querySelector('#form-modal-content').innerHTML = response.data;
@@ -111,19 +112,11 @@
         }
 
         function deleteUser(id) {
-            document.querySelector('#form-modal-title').textContent = "Excluir  Usuário";
-            alert.show();
-
-            // axios.delete(`{{ url('/user') }}/${id}`)
-            // .then(function (response) {
-            //     document.querySelector('#form-modal-content').innerHTML = response.data;
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // })
-            // .finally(function () {
-            //     spinner.classList.add('hidden');
-            // });
+            document.querySelector('#delete-modal-text').textContent = "Tem certeza da exclusão do usuário?";
+            document.querySelector('#delete-modal-action').addEventListener('click', (ev) => {
+                confirmDelete(id)
+            });
+            alertModal.show();
         }
 
         function saveUser(form) {
@@ -144,19 +137,29 @@
                     'Content-Type': 'application/json'
                 }
             }).then((response) => {
-                console.log(response);
+                alert(response.data.message);
+                if (response.data.status) {
+                    window.location.reload();
+                }
             }).catch((error) => {
                 console.log(error);
             });
-
         }
 
-        function formToString(formData) {
-            var object = {};
-            formData.forEach(function(value, key){
-                object[key] = value;
+        function confirmDelete(id) {
+            axios.delete(`{{ url('/user') }}/${id}`)
+            .then(function (response) {
+                alert(response.data.message);
+                if (response.data.status) {
+                    window.location.reload();
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+                spinner.classList.add('hidden');
             });
-            return JSON.stringify(object); 
         }
     </script>
 </x-app-layout>
