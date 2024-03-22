@@ -142,7 +142,12 @@
                     window.location.reload();
                 }
             }).catch((error) => {
-                console.log(error);
+                let errorList = '';
+                // for (let i = 0; i < error.errors.length; i++) {
+                //     errorList += error.errors[i] + "\n";
+                // }
+                
+                console.log('Error', error.message);
             });
         }
 

@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
             'permission' => 'in:A,P',
             'status' => 'in:A,I',
             'phone' => 'required',
-            'address' => '',
+            'address' => 'required',
             'zip_code' => 'required',
             'city' => 'required',
         ];
