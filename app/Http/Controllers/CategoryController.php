@@ -48,7 +48,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        if ($this->categories->create($category)) {
+        if ($this->categories->create($request -> all())) {
             return response(['message' => 'Categoria cadastrada', 'status' => true]);
         }
         return response(['message' => 'Categoria não cadastrada', 'status' => false]);
@@ -108,7 +108,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->categores->find($id);
+        $category = $this->categories->find($id);
 
         if ($category->delete()) {
             return response(['message' => 'Categoria excluída', 'status' => true]);

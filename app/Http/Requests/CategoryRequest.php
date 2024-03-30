@@ -25,17 +25,11 @@ class CategoryRequest extends FormRequest
     {
         $validRequest = [
             'name' => 'required|max:200',
-            'description' => 'required|description',
-            'age_max' => 'required|age_max',
-            'age_min' => 'required|age_min',
+            'description' => 'required',
+            'age_max' => 'required',
+            'age_min' => 'required',
             
         ];
-
-        $validaSenha = 'required|min:5|max:30';
-        if (strlen(request()->id) <= 0) {
-            $validRequest['email'] .= '|unique:users';
-            $validRequest['password'] = $validaSenha;
-        }
 
         return $validRequest;
     }

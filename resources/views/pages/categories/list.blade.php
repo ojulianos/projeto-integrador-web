@@ -37,7 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $Category)
+                                @foreach ($categories as $category)
                                 <tr class="bg-white border-b">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                         {{ $category->name }}
@@ -60,7 +60,7 @@
                                         </button>
                                         <button 
                                             type="button"
-                                            onclick="deleteCatgory({{ $category->id }})"
+                                            onclick="deleteCategory({{ $category->id }})"
                                             class="border border-gray-200 px-2 py-1 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 inline-flex items-center">
                                             Excluir
                                         </button>
@@ -84,7 +84,7 @@
             let form = document.getElementById('formCategory');
             form.addEventListener('submit', (ev) => {
                 ev.preventDefault();
-                save(form, method);
+                saveCategory(form, method);
             });
         }
 
@@ -121,11 +121,11 @@
 
         function saveCategory(form) {
             let formData = new FormData(form);
-            let url = `{{ url('/Category') }}`;
+            let url = `{{ url('/category') }}`;
             let method = 'post';
             
             if (formData.get('id').trim().length > 0) {
-                url = `{{ url('/Category') }}/` + formData.get('id'); 
+                url = `{{ url('/category') }}/` + formData.get('id'); 
                 method = 'put';
             }
 
@@ -152,7 +152,7 @@
         }
 
         function confirmDelete(id) {
-            axios.delete(`{{ url('/Category') }}/${id}`)
+            axios.delete(`{{ url('/category') }}/${id}`)
             .then(function (response) {
                 alert(response.data.message);
                 if (response.data.status) {
