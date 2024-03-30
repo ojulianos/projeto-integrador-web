@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 
 
@@ -45,13 +46,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-
         if ($this->categories->create($category)) {
-            return response(['message' => 'category cadastrada', 'status' => true]);
+            return response(['message' => 'Categoria cadastrada', 'status' => true]);
         }
-        return response(['message' => 'category não cadastrada', 'status' => false]);
+        return response(['message' => 'Categoria não cadastrada', 'status' => false]);
     }
 
     /**
@@ -86,9 +86,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        $category = $this->category->find($id);
+        $category = $this->categories->find($id);
         
         foreach ($request->except('_token') as $key => $value) {
             $category->$key = $value;
@@ -108,7 +108,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->category->find($id);
+        $category = $this->categores->find($id);
 
         if ($category->delete()) {
             return response(['message' => 'Categoria excluída', 'status' => true]);
