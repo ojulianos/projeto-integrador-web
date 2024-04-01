@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ScheduleRequest;
+use App\Models\Presence;
 use Illuminate\Http\Request;
 
 class PresenceController extends Controller
 {
+    private Presence $presences;
+
+    public function __construct(Presence $presence)
+    {
+        $this->presences = $presence;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,9 @@ class PresenceController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.presences.list', [
+            'presences' => $this->presences->paginate(20)
+        ]);
     }
 
     /**
@@ -23,18 +33,25 @@ class PresenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.presences.form', [
+            'presences' => $this->presences,
+            'form_action' => route('presence.store')
+        ]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Requests\PresenceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PresenceRequest $request)
     {
-        //
+        $presence = $request->all();
+
+        if ($this->presences->create($presence)) {
+            return response(['message' => 'Presença cadastrada', 'status' => true]);
+        }
+        return response(['message' => 'Presença não cadastrada', 'status' => false]);
     }
 
     /**
@@ -45,7 +62,10 @@ class PresenceController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.presences.form', [
+            'presence' => $this->presences->find($id),
+            'form_action' => route('presence.store')
+        ]);
     }
 
     /**
@@ -56,19 +76,28 @@ class PresenceController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.presences.form', [
+            'presence' => $this->presences->find($id),
+            'form_action' => route('presence.store')
+        ]);
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Illuminate\Requests\PresenceRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PresenceRequest $request, $id)
     {
-        //
+        $presence = $this->presences->find($id);
+        
+        if ($presence->save()) {
+            return response(['message' => 'Presença atualizada', 'status' => true]);
+        }
+        return response(['message' => 'Presença não atualizada', 'status' => false]);
     }
 
     /**
@@ -79,6 +108,10 @@ class PresenceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $presence = $this->presences->find($id);
+
+        if ($presence->delete()) {
+            return response(['message' => 'Presença excluída', 'status' => true]);
+        }
     }
 }

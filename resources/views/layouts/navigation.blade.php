@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
                         Categorias
                     </x-nav-link>
+                    <x-nav-link :href="route('presence.index')" :active="request()->routeIs('presence.index')">
+                        Presenças
+                    </x-nav-link>
                     <x-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
                         Agenda
                     </x-nav-link>

@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ScheduleRequest;
+use App\Models\ScheduleClass;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
+    private ScheduleClass $schedules;
+
+    public function __construct(ScheduleClass $schedule)
+    {
+        $this->schedules = $schedule;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.schedules.list', [
+            'schedules' => $this->schedules->paginate(20)
+        ]);
     }
 
     /**
@@ -23,18 +33,26 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.schedules.form', [
+            'schedules' => $this->schedules,
+            'form_action' => route('schedule.store')
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Requests\ScheduleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ScheduleRequest $request)
     {
-        //
+        $schedule = $request->all();
+
+        if ($this->schedules->create($schedule)) {
+            return response(['message' => 'Agenda cadastrada', 'status' => true]);
+        }
+        return response(['message' => 'Agenda não cadastrada', 'status' => false]);
     }
 
     /**
@@ -56,19 +74,27 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.schedules.form', [
+            'schedule' => $this->schedules->find($id),
+            'form_action' => route('schedule.store')
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Requests\ScheduleRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ScheduleRequest $request, $id)
     {
-        //
+        $schedule = $this->schedules->find($id);
+        
+        if ($schedule->save()) {
+            return response(['message' => 'Agenda atualizada', 'status' => true]);
+        }
+        return response(['message' => 'Agenda não atualizada', 'status' => false]);
     }
 
     /**
@@ -79,6 +105,10 @@ class ScheduleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $schedule = $this->schedules->find($id);
+
+        if ($schedule->delete()) {
+            return response(['message' => 'Agenda excluída', 'status' => true]);
+        }
     }
 }
