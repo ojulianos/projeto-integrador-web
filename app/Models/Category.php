@@ -17,7 +17,7 @@ class Category extends Model
     ];
 
 
-    public function scheduleClass()
+    public function schedule_class()
     {
         return $this->hasMany(ScheduleClass::class);
     }

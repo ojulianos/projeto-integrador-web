@@ -78,7 +78,7 @@
             let form = document.getElementById('formPresence');
             form.addEventListener('submit', (ev) => {
                 ev.preventDefault();
-                saveUser(form, method);
+                savePresence(form, method);
             });
         }
 

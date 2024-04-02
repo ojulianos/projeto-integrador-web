@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ScheduleRequest;
+use App\Http\Requests\PresenceRequest;
 use App\Models\Presence;
-use Illuminate\Http\Request;
+use App\Models\ScheduleClass;
+use App\Models\Student;
 
 class PresenceController extends Controller
 {
     private Presence $presences;
+    private ScheduleClass $classes;
+    private Student $students;
 
-    public function __construct(Presence $presence)
+    public function __construct(Presence $presence, ScheduleClass $schedule, Student $student)
     {
         $this->presences = $presence;
+        $this->classes = $schedule;
+        $this->students = $student;
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +40,8 @@ class PresenceController extends Controller
     {
         return view('pages.presences.form', [
             'presences' => $this->presences,
+            'students' => $this->students->all(),
+            'classes' => $this->classes->all(),
             'form_action' => route('presence.store')
         ]);
     }
@@ -78,6 +85,8 @@ class PresenceController extends Controller
     {
         return view('pages.presences.form', [
             'presence' => $this->presences->find($id),
+            'students' => $this->students->all(),
+            'classes' => $this->classes->all(),
             'form_action' => route('presence.store')
         ]);
         
