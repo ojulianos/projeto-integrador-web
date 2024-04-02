@@ -112,7 +112,7 @@
         }
 
         function deleteCategory(id) {
-            document.querySelector('#delete-modal-text').textContent = "Tem certeza da exclusão do usuário?";
+            document.querySelector('#delete-modal-text').textContent = "Tem certeza da exclusão da categoria?";
             document.querySelector('#delete-modal-action').addEventListener('click', (ev) => {
                 confirmDelete(id)
             });
