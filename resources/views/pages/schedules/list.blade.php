@@ -52,7 +52,7 @@
                                         {{ $schedule->description }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $schedule->dar_week }}
+                                        {{ $schedule->day_week }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $schedule->category_id }}
@@ -96,7 +96,7 @@
             let form = document.getElementById('formSchedule');
             form.addEventListener('submit', (ev) => {
                 ev.preventDefault();
-                saveUser(form, method);
+                saveSchedule(form, method);
             });
         }
 

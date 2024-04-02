@@ -15,4 +15,10 @@ class Category extends Model
         'age_max',
         'age_min',
     ];
+
+
+    public function scheduleClass()
+    {
+        return $this->hasMany(ScheduleClass::class);
+    }
 }

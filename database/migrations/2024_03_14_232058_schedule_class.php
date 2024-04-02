@@ -17,7 +17,7 @@ class ScheduleClass extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('dar_week');
+            $table->string('day_week');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->time('time_start');

@@ -76,10 +76,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.users.form', [
+        $parametros = [
             'user' => $this->users->find($id),
             'form_action' => route('user.store')
-        ]);
+        ];
+
+        return view('pages.users.form', $parametros);
     }
 
     /**

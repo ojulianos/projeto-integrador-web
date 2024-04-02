@@ -4,15 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ScheduleRequest;
 use App\Models\ScheduleClass;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
     private ScheduleClass $schedules;
+    private $dias_semana;
 
     public function __construct(ScheduleClass $schedule)
     {
         $this->schedules = $schedule;
+        $this->dias_semana = [
+            ['numero' => 0, 'dia' => 'Segunda-Feira'],
+            ['numero' => 1, 'dia' => 'Terça-Feira'],
+            ['numero' => 2, 'dia' => 'Quarta-Feira'],
+            ['numero' => 3, 'dia' => 'Quinta-Feira'],
+            ['numero' => 4, 'dia' => 'Sexta-Feira'],
+            ['numero' => 5, 'dia' => 'Sábado'],
+            ['numero' => 6, 'dia' => 'Domingo'],
+        ];
     }
     /**
      * Display a listing of the resource.
@@ -35,6 +46,8 @@ class ScheduleController extends Controller
     {
         return view('pages.schedules.form', [
             'schedules' => $this->schedules,
+            'categories' => Category::all(),
+            'dias_semana' => $this->dias_semana,
             'form_action' => route('schedule.store')
         ]);
     }
@@ -47,7 +60,10 @@ class ScheduleController extends Controller
      */
     public function store(ScheduleRequest $request)
     {
-        $schedule = $request->all();
+        $schedule = $request->except('_token', 'day_week[0]', 'day_week[1]', 'day_week[2]', 'day_week[3]', 'day_week[4]', 'day_week[5]', 'day_week[6]');
+        $days_week = request()->only('day_week[0]', 'day_week[1]', 'day_week[2]', 'day_week[3]', 'day_week[4]', 'day_week[5]', 'day_week[6]');
+        $day_week = implode(',', $days_week);
+        $schedule['day_week'] = $day_week;
 
         if ($this->schedules->create($schedule)) {
             return response(['message' => 'Agenda cadastrada', 'status' => true]);
@@ -76,6 +92,8 @@ class ScheduleController extends Controller
     {
         return view('pages.schedules.form', [
             'schedule' => $this->schedules->find($id),
+            'categories' => Category::all(),
+            'dias_semana' => $this->dias_semana,
             'form_action' => route('schedule.store')
         ]);
     }
@@ -90,7 +108,15 @@ class ScheduleController extends Controller
     public function update(ScheduleRequest $request, $id)
     {
         $schedule = $this->schedules->find($id);
-        
+
+        foreach ($request->except('_token', 'day_week[0]', 'day_week[1]', 'day_week[2]', 'day_week[3]', 'day_week[4]', 'day_week[5]', 'day_week[6]') as $key => $value) {
+            $schedule->$key = $value;
+        }
+
+        $days_week = request()->only('day_week[0]', 'day_week[1]', 'day_week[2]', 'day_week[3]', 'day_week[4]', 'day_week[5]', 'day_week[6]');
+        $day_week = implode(',', $days_week);
+        $schedule['day_week'] = $day_week;
+
         if ($schedule->save()) {
             return response(['message' => 'Agenda atualizada', 'status' => true]);
         }
