@@ -5,7 +5,7 @@
         <input type="text"
             id="title"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Confirmar presença"
+            placeholder="Título do Evento"
             value="{{ $event->title }}"
             name="title"
             required />
@@ -14,7 +14,7 @@
         <label for="description" class="block mb-1 text-sm font-medium text-gray-900">Descrição</label>
         <input type="text" id="description"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Descrição"
+            placeholder="Descrição do Evento"
             value="{{ $event->description }}"
             name="description"
             required />
