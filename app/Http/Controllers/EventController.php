@@ -34,7 +34,7 @@ class EventController extends Controller
     public function create()
     {
         return view('pages.events.form', [
-            'events' => $this->events,
+            'event' => $this->events,
             'form_action' => route('event.store')
         ]);
     }
@@ -47,7 +47,7 @@ class EventController extends Controller
      */
     public function store(EventRequest $request)
     {
-        $event = $request->all();
+        $event = $request->except('_token');
 
         if ($this->events->create($event)) {
             return response(['message' => 'Evento cadastrado', 'status' => true]);
@@ -77,7 +77,7 @@ class EventController extends Controller
     public function edit($id)
     {
         return view('pages.events.form', [
-            'event' => $this->eventss->find($id),
+            'event' => $this->events->find($id),
             'form_action' => route('event.store')
         ]);
         
@@ -94,6 +94,10 @@ class EventController extends Controller
     {
         $event = $this->events->find($id);
         
+        foreach ($request->except('_token') as $key => $value) {
+            $event->$key = $value;
+        }
+
         if ($event->save()) {
             return response(['message' => 'Evento atualizado', 'status' => true]);
         }

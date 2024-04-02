@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Presenças
+            Eventos
         </h2>
     </x-slot>
 
@@ -87,7 +87,7 @@
             let url = `{{ route('event.create') }}`;
             let method = 'post';
             if (id !== null) {
-                title = 'Atualizar evento';
+                title = 'Atualizar Evento';
                 url = `{{ url('/event') }}/${id}/edit`;
                 method = 'put';
             }
