@@ -13,7 +13,7 @@ class FinancialRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,8 +27,6 @@ class FinancialRequest extends FormRequest
             'type' => 'required|max:200',
             'description' => 'required',
             'value' => 'required',
-            'discount_value' => 'required',
-            'addtional_value' => 'required',
             'date_maturiry' => 'required',
             'date_emission' => 'required',
             'date_payment' => 'required', 

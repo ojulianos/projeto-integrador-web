@@ -18,8 +18,8 @@ class Financial extends Migration
             $table->char('type', 1);
             $table->string('description');
             $table->float('value', 10, 2);
-            $table->float('discount_value', 10, 2);
-            $table->float('addition_value', 10, 2);
+            $table->float('discount_value', 10, 2)->nullable();
+            $table->float('addition_value', 10, 2)->nullable();
             $table->dateTime('date_maturiry');
             $table->dateTime('date_emission');
             $table->dateTime('date_payment');
