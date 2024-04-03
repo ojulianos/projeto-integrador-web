@@ -26,6 +26,7 @@
         <input type="number"
             id="value"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            placeholder="00,00"
             value="{{ $finance->value }}"
             name="value"
             required />
@@ -35,6 +36,7 @@
         <input type="number"
             id="discount_value"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            placeholder="00,00"
             value="{{ $finance->discount_value }}"
             name="discount_value"
             />
@@ -44,6 +46,7 @@
         <input type="number"
             id="addition_value"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            placeholder="00,00"
             value="{{ $finance->addition_value}}"
             name="addition_value"
             />

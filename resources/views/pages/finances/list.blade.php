@@ -12,28 +12,28 @@
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3" width="10%">
+                                    <th scope="col" class="px-6 py-3" width="5%">
                                         Tipo
                                     </th>
-                                    <th scope="col" class="px-6 py-3" width="20%">
+                                    <th scope="col" class="px-6 py-3" width="15%">
                                         Descrição
                                     </th>
-                                    <th scope="col" class="px-6 py-3" width="10%">
+                                    <th scope="col" class="px-6 py-3" width="8%">
                                         Valor
                                     </th>
-                                    <th scope="col" class="px-6 py-3" width="10%">
+                                    <th scope="col" class="px-6 py-3" width="8%">
                                         Valor Desconto
                                     </th>
-                                    <th scope="col" class="px-6 py-3" width="10%">
+                                    <th scope="col" class="px-6 py-3" width="8%">
                                         Valor Acrescimo
                                     </th>
-                                    <th scope="col" class="px-6 py-3" width="10%">
+                                    <th scope="col" class="px-6 py-3" width="12%">
                                         Data Vencimento
                                     </th>
-                                    <th scope="col" class="px-6 py-3" width="10%">
+                                    <th scope="col" class="px-6 py-3" width="12%">
                                         Data Emissao
                                     </th>
-                                    <th scope="col" class="px-6 py-3" width="10%">
+                                    <th scope="col" class="px-6 py-3" width="12%">
                                         Data pagamento
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-center" width="10%">
@@ -82,7 +82,7 @@
                                         </button>
                                         <button 
                                             type="button"
-                                            onclick="formFinance({{ $finance->id }})"
+                                            onclick="deleteFinance({{ $finance->id }})"
                                             class="border border-gray-200 px-2 py-1 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 inline-flex items-center">
                                             Excluir
                                         </button>
