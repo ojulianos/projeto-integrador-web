@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FinancialRequest;
+use App\Models\Financial;
 
 class FinancialController extends Controller
 {
+    private Financial $finances;
+
+    public function __construct(Financial $finance){
+        $this->finances = $finance;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,9 @@ class FinancialController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.finances.list',[
+            'finances' => $this -> finances ->paginate(20)
+        ]);
     }
 
     /**
@@ -23,7 +32,10 @@ class FinancialController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.finances.form',[
+            'finance' => $this->finances,
+            'form_action' => route('finance.store')
+        ]);
     }
 
     /**
@@ -32,9 +44,12 @@ class FinancialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FinancialRequest $request)
     {
-        //
+        if ($this->finances->create($request -> all())) {
+            return response(['message' => 'Titulo cadastrado', 'status' => true]);
+        }
+        return response(['message' => 'Titulo não cadastrado', 'status' => false]);          
     }
 
     /**
@@ -56,7 +71,10 @@ class FinancialController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.finances.form', [
+            'finance' => $this->finances->find($id),
+            'form_action' => route('finance.store')
+        ]);
     }
 
     /**
@@ -66,9 +84,18 @@ class FinancialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FinancialRequest $request, $id)
     {
-        //
+        $finance = $this->finances->find($id);
+        
+        foreach ($request->except('_token') as $key => $value) {
+            $finance->$key = $value;
+        }
+
+        if ($finance->save()) {
+            return response(['message' => 'Catergoria atualizada', 'status' => true]);
+        }
+        return response(['message' => 'Categoria não atualizada', 'status' => false]);
     }
 
     /**
@@ -79,6 +106,11 @@ class FinancialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $finance = $this->finances->find($id);
+
+        if ($finance->delete()) {
+            return response(['message' => 'Categoria excluída', 'status' => true]);
+        }
+        return response(['message' => 'Categoria não excluída', 'status' => false]);
     }
 }
