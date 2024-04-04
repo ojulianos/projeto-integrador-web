@@ -11,6 +11,11 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 
+Route::get('/template', function () {
+    return view('default');
+});
+
+
 Route::get('/', function () {
     return redirect('login');
 });
@@ -26,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('student', StudentController::class);
     Route::resource('user', UserController::class);
 
+    Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
 });
 
 

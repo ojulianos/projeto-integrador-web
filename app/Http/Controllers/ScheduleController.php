@@ -45,7 +45,7 @@ class ScheduleController extends Controller
     public function create()
     {
         return view('pages.schedules.form', [
-            'schedules' => $this->schedules,
+            'schedule' => $this->schedules,
             'categories' => Category::all(),
             'dias_semana' => $this->dias_semana,
             'form_action' => route('schedule.store')
