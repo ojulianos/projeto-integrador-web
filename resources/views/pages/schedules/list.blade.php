@@ -66,7 +66,7 @@
                     {{ $schedule->description }}
                 </td>
                 <td class="p-4 text-base font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $schedule->day_week }}
+                    {!! $schedule->hasDays() !!}
                 </td>
                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $schedule->category->description }}
