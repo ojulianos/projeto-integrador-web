@@ -46,18 +46,8 @@
                                         {{ $presence->student_id }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <button 
-                                            type="button"
-                                            onclick="formPresence({{ $presence->id }})"
-                                            class="border border-gray-200 px-2 py-1 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 inline-flex items-center">
-                                            Editar
-                                        </button>
-                                        <button 
-                                            type="button"
-                                            onclick="deletePresence({{ $presence->id }})"
-                                            class="border border-gray-200 px-2 py-1 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 inline-flex items-center">
-                                            Excluir
-                                        </button>
+                                        <x-custom.edit-button :functionName="'formPresence'" :itemId=$presence />
+                                        <x-custom.delete-button :functionName="'deletePresence'" :itemId=$presence />
                                     </td>
                                 </tr>
                                 @endforeach
