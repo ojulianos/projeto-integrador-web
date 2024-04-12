@@ -20,6 +20,7 @@ class FinancialController extends Controller
      */
     public function index()
     {
+        // dd($this -> finances ->paginate(1));
         return view('pages.finances.list',[
             'finances' => $this -> finances ->paginate(20)
         ]);

@@ -8,8 +8,8 @@
             name="type"
             required>
             <option selected>Selecione</option>
-            <option value="A" {{ $finance->type == 'P' ? 'selected' : '' }}>Pagar</option>
-            <option value="P" {{ $finance->type == 'R' ? 'selected' : '' }}>Receber</option>
+            <option value="P" {{ $finance->type == 'P' ? 'selected' : '' }}>Pagar</option>
+            <option value="R" {{ $finance->type == 'R' ? 'selected' : '' }}>Receber</option>
         </select>
     </div>
     <div class="mb-4">
@@ -56,7 +56,8 @@
         <input type="date"
             id="date_maturiry"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
-            value="{{ $finance->date_maturiry }}"
+            {{-- value="{{ $finance->date_maturiry }}" --}}
+            value={{ date('Y-m-d', strtotime($finance->date_maturiry)) }}
             name="date_maturiry"
             />
     </div>
@@ -65,7 +66,7 @@
         <input type="date"
             id="date_emission"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
-            value="{{ $finance->date_emission }}"
+            value={{ date('Y-m-d', strtotime($finance->date_emission)) }}
             name="date_emission"
             />
     </div>
@@ -74,7 +75,7 @@
         <input type="date"
             id="date_payment"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
-            value="{{ $finance->date_payment }}"
+            value={{ date('Y-m-d', strtotime($finance->date_payment)) }}
             name="date_payment"
             />
     </div>
