@@ -64,7 +64,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                 @foreach ($finances as $finance)
-                <tr class="{{  }} hover:bg-gray-100 dark:hover:bg-gray-700">
+                <tr class=" hover:bg-gray-100 dark:hover:bg-gray-700">
                     <th scope="row" class="p-4 text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {!! $finance->type_financial !!}
                     </th>
