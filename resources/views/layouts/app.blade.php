@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}?d={{ date('dmyHis') }}"> --}}
-    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="https://crm.bpm.com.br/csssomos/app.css">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
