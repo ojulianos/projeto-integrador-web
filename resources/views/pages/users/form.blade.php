@@ -5,7 +5,7 @@
         <label for="name" class="block mb-1 text-sm font-medium text-gray-900">Nome</label>
         <input type="text"
             id="name"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Digite o Nome"
             value="{{ $user->name }}"
             name="name"
@@ -14,7 +14,7 @@
     <div class="mb-4">
         <label for="email" class="block mb-1 text-sm font-medium text-gray-900">Email</label>
         <input type="email" id="email"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Digite o Email"
             value="{{ $user->email }}"
             name="email"
@@ -24,7 +24,7 @@
         <label for="password" class="block mb-1 text-sm font-medium text-gray-900">Senha</label>
         <input type="password"
             id="password"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="password"
             required />
     </div>
@@ -32,7 +32,7 @@
         <label for="birth_date" class="block mb-1 text-sm font-medium text-gray-900">Data de Nascimento</label>
         <input type="date"
             id="birth_date"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="{{ $user->birth_date }}"
             name="birth_date"
             />
@@ -40,7 +40,7 @@
     <div class="mb-4">
         <label for="sex" class="block mb-1 text-sm font-medium text-gray-900">Sexo</label>
         <select id="sex"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="sex"
             required>
             <option selected>Selecione</option>
@@ -53,7 +53,7 @@
         <label for="phone" class="block mb-1 text-sm font-medium text-gray-900">Telefone</label>
         <input type="phone"
             id="phone"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="phone"
             value="{{ $user->phone }}"
             required />
@@ -61,7 +61,7 @@
     <div class="mb-4">
         <label for="permission" class="block mb-1 text-sm font-medium text-gray-900">Tipo de Usuário</label>
         <select id="permission"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="permission"
             required>
             <option selected>Selecione</option>
@@ -72,7 +72,7 @@
     <div class="mb-4">
         <label for="status" class="block mb-1 text-sm font-medium text-gray-900">Status</label>
         <select id="status"
-            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="status"
             required>
             <option selected>Selecione</option>

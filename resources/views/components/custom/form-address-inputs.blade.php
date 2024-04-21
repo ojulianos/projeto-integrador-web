@@ -4,7 +4,7 @@
     <label for="zip_code" class="block mb-1 text-sm font-medium text-gray-900">CEP</label>
     <input type="text"
         id="zip_code"
-        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="zip_code"
         value="{{ $formData->zip_code }}"
         required />
@@ -12,7 +12,7 @@
 <div class="mb-4">
     <label for="state" class="block mb-1 text-sm font-medium text-gray-900">UF</label>
     <select id="state"
-        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="state"
         >
         <option>Selecione</option>
@@ -48,7 +48,7 @@
     <label for="city" class="block mb-1 text-sm font-medium text-gray-900">Cidade</label>
     <input type="text"
         id="city"
-        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="city"
         value="{{ $formData->city }}"
         required />
@@ -57,7 +57,7 @@
     <label for="address" class="block mb-1 text-sm font-medium text-gray-900">Endereço</label>
     <input type="text"
         id="address"
-        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="address"
         value="{{ $formData->address }}"
         />
@@ -66,7 +66,7 @@
     <label for="number" class="block mb-1 text-sm font-medium text-gray-900">Número</label>
     <input type="number"
         id="number"
-        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="number"
         value="{{ $formData->number }}"
         />
@@ -75,7 +75,7 @@
     <label for="zone" class="block mb-1 text-sm font-medium text-gray-900">Bairro</label>
     <input type="text"
         id="zone"
-        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500"
+        class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="zone"
         value="{{ $formData->zone }}"
         />
