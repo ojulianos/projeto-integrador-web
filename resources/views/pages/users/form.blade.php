@@ -1,8 +1,8 @@
-<form class="max-w-sm mx-auto" action="{{ $form_action }}" method="POST" enctype="multipart/form-data" id="formUser">
+<form class="mx-auto" action="{{ $form_action }}" method="POST" enctype="multipart/form-data" id="formUser">
     @csrf
     
     <div class="mb-4">
-        <label for="name" class="block mb-1 text-sm font-medium text-gray-900">Nome</label>
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
         <input type="text"
             id="name"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -12,7 +12,7 @@
             required />
     </div>
     <div class="mb-4">
-        <label for="email" class="block mb-1 text-sm font-medium text-gray-900">Email</label>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
         <input type="email" id="email"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Digite o Email"
@@ -21,7 +21,7 @@
             required />
     </div>
     <div class="mb-4">
-        <label for="password" class="block mb-1 text-sm font-medium text-gray-900">Senha</label>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Senha</label>
         <input type="password"
             id="password"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -29,7 +29,7 @@
             required />
     </div>
     <div class="mb-4">
-        <label for="birth_date" class="block mb-1 text-sm font-medium text-gray-900">Data de Nascimento</label>
+        <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de Nascimento</label>
         <input type="date"
             id="birth_date"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -38,7 +38,7 @@
             />
     </div>
     <div class="mb-4">
-        <label for="sex" class="block mb-1 text-sm font-medium text-gray-900">Sexo</label>
+        <label for="sex" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexo</label>
         <select id="sex"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="sex"
@@ -50,7 +50,7 @@
         </select>
     </div>
     <div class="mb-4">
-        <label for="phone" class="block mb-1 text-sm font-medium text-gray-900">Telefone</label>
+        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone</label>
         <input type="phone"
             id="phone"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -59,7 +59,7 @@
             required />
     </div>
     <div class="mb-4">
-        <label for="permission" class="block mb-1 text-sm font-medium text-gray-900">Tipo de Usuário</label>
+        <label for="permission" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de Usuário</label>
         <select id="permission"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="permission"
@@ -70,7 +70,7 @@
         </select>
     </div>
     <div class="mb-4">
-        <label for="status" class="block mb-1 text-sm font-medium text-gray-900">Status</label>
+        <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
         <select id="status"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="status"

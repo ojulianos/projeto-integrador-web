@@ -1,8 +1,8 @@
-<form class="max-w-sm mx-auto" action="{{ $form_action }}" method="POST" enctype="multipart/form-data" id="formSchedule">
+<form class="mx-auto" action="{{ $form_action }}" method="POST" enctype="multipart/form-data" id="formSchedule">
     @csrf
     
     <div class="mb-4">
-        <label for="title" class="block mb-1 text-sm font-medium text-gray-900">Nome</label>
+        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</label>
         <input type="text"
             id="title"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -12,7 +12,7 @@
             required />
     </div>
     <div class="mb-4">
-        <label for="description" class="block mb-1 text-sm font-medium text-gray-900">Descrição</label>
+        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrição</label>
         <input type="text" id="description"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Digite a Descrição"
@@ -21,7 +21,7 @@
             required />
     </div>
     <div class="mb-4">
-        <label for="category_id" class="block mb-1 text-sm font-medium text-gray-900">Categoria</label>
+        <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
         <select name="category_id" id="category_id" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option value="">Selecione uma Categoria</option>
             @foreach ($categories as $category)
@@ -30,7 +30,7 @@
         </select>
     </div>
     <div class="mb-4">
-        <label class="block mb-1 text-sm font-medium text-gray-900">Semana</label>
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Semana</label>
         
         <div class="flex">
             @foreach ($dias_semana as $dia_semana)
@@ -43,7 +43,7 @@
 
     </div>
     <div class="mb-4">
-        <label for="time_start" class="block mb-1 text-sm font-medium text-gray-900">Data de inicio</label>
+        <label for="time_start" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de inicio</label>
         <input type="time"
             id="time_start"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -52,7 +52,7 @@
             />
     </div>
     <div class="mb-4">
-        <label for="time_end" class="block mb-1 text-sm font-medium text-gray-900">Data de Final</label>
+        <label for="time_end" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de Final</label>
         <input type="time"
             id="time_end"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

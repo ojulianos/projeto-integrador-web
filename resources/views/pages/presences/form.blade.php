@@ -1,7 +1,7 @@
-<form class="max-w-sm mx-auto" action="{{ $form_action }}" method="POST" enctype="multipart/form-data" id="formPresence">
+<form class="mx-auto" action="{{ $form_action }}" method="POST" enctype="multipart/form-data" id="formPresence">
     @csrf
     <div class="mb-4">
-        <label for="confirmed" class="block mb-1 text-sm font-medium text-gray-900">Confirmar</label>
+        <label for="confirmed" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmar</label>
         <div class="flex">
             <div class="flex items-center me-4">
                 <input id="inline-radio" type="radio" name="confirmed" value="S" {{ $presences->confirmed == 'S' ? 'checked' : '' }} name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
@@ -15,7 +15,7 @@
 
     </div>
     <div class="mb-4">
-        <label for="schedule_class_id" class="block mb-1 text-sm font-medium text-gray-900">Agenda</label>
+        <label for="schedule_class_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agenda</label>
         <select name="schedule_class_id" id="schedule_class_id" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option value="">Selecione uma Agenda</option>
             @foreach ($classes as $class)
@@ -24,7 +24,7 @@
         </select>
     </div>
     <div class="mb-4">
-        <label for="student_id" class="block mb-1 text-sm font-medium text-gray-900">Estudante</label>
+        <label for="student_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estudante</label>
         <select name="student_id" id="student_id" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option value="">Selecione um aluno</option>
             @foreach ($students as $student)
