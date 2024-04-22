@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}?d={{ date('dmyHis') }}"> --}}
-    <link rel="stylesheet" href="https://crm.bpm.com.br/csssomos/app.css">
+    <link rel="stylesheet" href="{{ env('DB_USERNAME') != 'root' ? 'https://crm.bpm.com.br/csssomos/app.css' : asset('css/app.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -22,20 +21,9 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
 
-<script>
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-            '(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
-</script>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-800">
-
-
-
 
     <nav class="fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -453,55 +441,6 @@
         </div>
 
     </div>
-
-
-    <script>
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-        // Change the icons inside the button based on previous settings
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
-            themeToggleLightIcon.classList.remove('hidden');
-        } else {
-            themeToggleDarkIcon.classList.remove('hidden');
-        }
-
-        const themeToggleBtn = document.getElementById('theme-toggle');
-
-        let event = new Event('dark-mode');
-
-        themeToggleBtn.addEventListener('click', function() {
-
-            // toggle icons
-            themeToggleDarkIcon.classList.toggle('hidden');
-            themeToggleLightIcon.classList.toggle('hidden');
-
-            // if set via local storage previously
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                }
-
-                // if NOT set via local storage previously
-            } else {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                }
-            }
-
-            document.dispatchEvent(event);
-
-        });
-    </script>
 
 </body>
 

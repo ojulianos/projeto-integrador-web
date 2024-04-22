@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?d={{ date('dmyHis') }}">
-    {{-- <link rel="stylesheet" href="https://crm.bpm.com.br/csssomos/app.css"> --}}
+    <link rel="stylesheet" href="{{ env('DB_USERNAME') != 'root' ? 'https://crm.bpm.com.br/csssomos/app.css' : asset('css/app.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
