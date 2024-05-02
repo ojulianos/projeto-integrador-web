@@ -115,4 +115,20 @@ class CategoryController extends Controller
         }
         return response(['message' => 'Categoria não excluída', 'status' => false]);
     }
+
+    public function relatorio_aluno_categoria(Request $request)
+    {
+        $categoria = $request->category_id;
+        $alunos = [];
+
+        if ($categoria) {
+            $idades = Category::find($categoria);
+            
+            $alunos = (new Category())->relatorioAlunos($idades->age_min, $idades->age_max, $idades->name);
+        }
+        
+        $categorias = Category::all();
+        
+        return view('relatorios.alunos_x_categoria', ['alunos' => $alunos, 'categorias' => $categorias]);
+    }
 }

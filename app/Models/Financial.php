@@ -14,7 +14,7 @@ class Financial extends Model
         'description',
         'value',
         'discount_value',
-        'additional_value' ,
+        'addition_value' ,
         'date_maturiry',
         'date_emission' ,
         'date_payment', 

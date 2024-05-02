@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('finance', FinancialController::class);
     Route::resource('event', EventController::class);
     Route::resource('category', CategoryController::class);
+    Route::get('/relatorio/alunos_x_categoria', [CategoryController::class, 'relatorio_aluno_categoria']);
+
     Route::resource('schedule', ScheduleController::class);
     Route::resource('presence', PresenceController::class);
     Route::resource('student', StudentController::class);
