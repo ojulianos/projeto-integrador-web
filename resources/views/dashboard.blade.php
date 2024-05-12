@@ -11,30 +11,30 @@
                 <div class="p-6 bg-white border-b border-gray-950">
                     Resumo Financeiro
                 </div>
-                <dl class="grid max-w-screen-xl grid-cols-3 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-4 dark:text-white sm:p-8">
+                <dl class="grid max-w-screen-xl grid-cols-3 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-3 dark:text-white sm:p-8">
                     <div class="flex flex-col items-center justify-center text-red-800">
                         <dt class="mb-2 text-3xl font-extrabold">R$ {{number_format($saldos['total_pagar'],2,',','.')}}</dt>
-                        <dd class="text-gray-500 dark:text-gray-400">Total Mes</dd>
+                        <dd class="">Total Mes</dd>
                     </div>
-                    <div class="flex flex-col items-center justify-center text-green-500 dark:text-black">
+                    <div class="flex flex-col items-center justify-center text-green-500">
                         <dt class="mb-2 text-3xl font-extrabold">R$ {{number_format($saldos['total_receber'],2,',','.')}}</dt>
-                        <dd class="text-gray-500 dark:text-gray-400">Total Mes</dd>
+                        <dd class="">Total Mes</dd>
                     </div>
-                    <div class="flex flex-col items-center justify-center text-gray-500 dark:text-black">
+                    <div class="flex flex-col items-center justify-center text-gray-500">
                         <dt class="mb-2 text-3xl font-extrabold">R$ {{number_format($saldos['saldo'],2,',','.')}}</dt>
-                        <dd class="text-gray-500 dark:text-gray-400">Saldo Mes</dd>
+                        <dd class="">Saldo Mes</dd>
                     </div>
                     <div class="flex flex-col items-center justify-center text-red-800">
                         <dt class="mb-2 text-3xl font-extrabold">R$ {{number_format($saldos['total_pagar_ano'],2,',','.')}}</dt>
-                        <dd class="text-gray-500 dark:text-gray-400">Total Pagar Ano</dd>
+                        <dd class="">Total Pagar Ano</dd>
                     </div>
-                    <div class="flex flex-col items-center justify-center text-green-500 dark:text-black">
+                    <div class="flex flex-col items-center justify-center text-green-500">
                         <dt class="mb-2 text-3xl font-extrabold">R$ {{number_format($saldos['total_receber_ano'],2,',','.')}}</dt>
-                        <dd class="text-gray-500 dark:text-gray-400">Total Receber Ano</dd>
+                        <dd class="">Total Receber Ano</dd>
                     </div>
-                    <div class="flex flex-col items-center justify-center text-gray-500 dark:text-black">
+                    <div class="flex flex-col items-center justify-center text-gray-500">
                         <dt class="mb-2 text-3xl font-extrabold">R$ {{number_format($saldos['saldo_ano'],2,',','.')}}</dt>
-                        <dd class="text-gray-500 dark:text-gray-400">Saldo Ano</dd>
+                        <dd class="">Saldo Ano</dd>
                     </div>
                 </dl>    
             </div>

@@ -18,7 +18,7 @@
                     </svg>
                 </button>
                 <a href="{{ route('dashboard') }}" class="flex ml-2 md:mr-24">
-                    <img src="{{ asset('storage/img/bola.svg') }}" class="h-8 mr-3"
+                    <img src="{{ url('img/bola.svg') }}" class="h-8 mr-3"
                         alt="{{ config('app.name', 'Laravel') }} Logo" />
                     <span
                         class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ config('app.name', 'Laravel') }}</span>
@@ -64,7 +64,7 @@
                             id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
                             <span class="sr-only">Abrir Menu Usuário</span>
                             <img class="w-8 h-8 rounded-full"
-                                src="{{ asset('storage/img/usuario.svg') }}"
+                                src="{{ url('img/usuario.svg') }}"
                                 alt="Foto Usuário">
                         </button>
                     </div>
