@@ -29,7 +29,7 @@ class FinancialController extends Controller
         ){
             $finances = $finances->where ('type',request('type'));
         }
-p
+
         if (!empty($dt_inicio)) {
             $finances = $finances->where('date_maturiry', '>=', $dt_inicio);
         }
