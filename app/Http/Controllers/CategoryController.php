@@ -95,7 +95,7 @@ class CategoryController extends Controller
         }
 
         if ($category->save()) {
-            return response(['message' => 'Catergoria atualizada', 'status' => true]);
+            return response(['message' => 'Categoria atualizada', 'status' => true]);
         }
         return response(['message' => 'Categoria não atualizada', 'status' => false]);
     }

@@ -20,9 +20,30 @@ class FinancialController extends Controller
      */
     public function index()
     {
-        // dd($this -> finances ->paginate(1));
+        $dt_inicio = request('date_initial');
+        $dt_fim = request('date_final');
+        $finances = $this->finances;
+
+        if (
+            request('type') == 'R' || request('type') == 'P' 
+        ){
+            $finances = $finances->where ('type',request('type'));
+        }
+p
+        if (!empty($dt_inicio)) {
+            $finances = $finances->where('date_maturiry', '>=', $dt_inicio);
+        }
+    
+        if (!empty($dt_fim)) {
+            $finances = $finances->where('date_maturiry', '<=', $dt_fim);
+        }
+
+
+        $finances = $finances ->paginate(20);
+
+        // dd(request());
         return view('pages.finances.list',[
-            'finances' => $this -> finances ->paginate(20)
+            'finances' => $finances
         ]);
     }
 
@@ -77,6 +98,14 @@ class FinancialController extends Controller
             'form_action' => route('finance.store')
         ]);
     }
+    
+    public function pay($id)
+    {
+        return view('pages.finances.payment', [
+            'finance' => $this->finances->find($id),
+            'form_action' => route('finance.store')
+        ]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -94,9 +123,9 @@ class FinancialController extends Controller
         }
 
         if ($finance->save()) {
-            return response(['message' => 'Catergoria atualizada', 'status' => true]);
+            return response(['message' => 'Título atualizado', 'status' => true]);
         }
-        return response(['message' => 'Categoria não atualizada', 'status' => false]);
+        return response(['message' => 'Título não atualizado', 'status' => false]);
     }
 
     /**
