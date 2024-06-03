@@ -20,9 +20,9 @@ class Financial extends Migration
             $table->float('value', 10, 2);
             $table->float('discount_value', 10, 2)->nullable();
             $table->float('addition_value', 10, 2)->nullable();
-            $table->dateTime('date_maturiry');
-            $table->dateTime('date_emission');
-            $table->dateTime('date_payment');
+            $table->dateTime('date_maturiry')->nullable();
+            $table->dateTime('date_emission')->nullable();
+            $table->dateTime('date_payment')->nullable();
             $table->timestamps();
         });
     }

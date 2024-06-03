@@ -200,7 +200,7 @@
         let url = `{{ route('finance.create') }}`;
         let method = 'post';
         if (id !== null) {
-            title = 'pagar Titulo';
+            title = 'Pagar Titulo';
             url = `{{ url('/finance') }}/${id}/pay`;
             method = 'put';
         }
