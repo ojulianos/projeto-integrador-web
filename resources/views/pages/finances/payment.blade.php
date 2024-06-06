@@ -6,7 +6,7 @@
         <select id="type"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             name="type"
-            required>
+            disabled>
             <option selected>Selecione</option>
             <option value="P" {{ $finance->type == 'P' ? 'selected' : '' }}>Pagar</option>
             <option value="R" {{ $finance->type == 'R' ? 'selected' : '' }}>Receber</option>
@@ -19,7 +19,7 @@
             placeholder="00,00"
             value="{{ $finance->value }}"
             name="value"
-            required />
+            disabled />
     </div>
     <div class="mb-4">
         <label for="discount_value" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valor Desconto</label>
@@ -29,7 +29,7 @@
             placeholder="00,00"
             value="{{ $finance->discount_value }}"
             name="discount_value"
-            />
+            disabled/>
     </div>
     <div class="mb-4">
         <label for="addition_value" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valor Adicional</label>
@@ -39,7 +39,7 @@
             placeholder="00,00"
             value="{{ $finance->addition_value}}"
             name="addition_value"
-            />
+            disabled/>
     </div>
     <div class="mb-4">
         <label for="date_payment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data Pagamento</label>

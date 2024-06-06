@@ -70,7 +70,7 @@
             name="date_emission"
         />
     </div>
-    {{-- <div class="mb-4">
+    <div class="mb-4">
         <label for="date_payment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data Pagamento</label>
         <input type="date"
             id="date_payment"
@@ -78,7 +78,7 @@
             value="{{ old('date_emission', $finance->date_payment ?? '') }}"
             name="date_payment"
             />
-    </div> --}}
+    </div>
    
     <input type="hidden" name="id" value="{{ $finance->id }}">
     <button type="submit"
