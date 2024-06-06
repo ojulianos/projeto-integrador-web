@@ -197,5 +197,10 @@
                 spinner.classList.add('hidden');
             });
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var phoneInput = document.getElementById('phone_1');
+            Inputmask("(99) 99999-9999").mask(phoneInput);
+        });
     </script>
 </x-app-layout>
