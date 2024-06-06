@@ -107,6 +107,7 @@ class FinancialController extends Controller
         ]);
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -126,6 +127,18 @@ class FinancialController extends Controller
             return response(['message' => 'Título atualizado', 'status' => true]);
         }
         return response(['message' => 'Título não atualizado', 'status' => false]);
+    }
+
+    public function payPut(Request $request, $id)
+    {
+        $finance = $this->finances->find($id);
+        
+        $finance->date_payment = request('date_payment');
+
+        if ($finance->save()) {
+            return response(['message' => 'Título Pago', 'status' => true]);
+        }
+        return response(['message' => 'Título não Pago', 'status' => false]);
     }
 
     /**

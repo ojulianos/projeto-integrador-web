@@ -163,13 +163,23 @@
 <x-form-modal></x-form-modal>
 
 <script>
-    function preventSubmit(method = 'post') {
-        removeAllListeners('#formFinance');
-        let form = document.getElementById('formFinance');
-        form.addEventListener('submit', (ev) => {
-            ev.preventDefault();
-            saveFinance(form, method);
-        });
+    function preventSubmit(method = 'post', pg = false) {
+        if (!pg) {
+            removeAllListeners('#formFinance');
+            let form = document.getElementById('formFinance');
+            form.addEventListener('submit', function (ev) {
+                ev.preventDefault();
+                saveFinance(form, method);
+            });
+        } else {
+            removeAllListeners('#paymentFinance');
+            let formPay = document.getElementById('paymentFinance');
+            formPay.addEventListener('submit', function (ev) {
+                ev.preventDefault();
+                saveFinance(formPay, true);
+            });
+        }
+
     }
 
     function formFinance(id = null) {
@@ -196,14 +206,9 @@
     }
 
     function payFinance(id = null) {
-        let title = 'Novo Titulo';
-        let url = `{{ route('finance.create') }}`;
-        let method = 'post';
-        if (id !== null) {
-            title = 'Pagar Titulo';
-            url = `{{ url('/finance') }}/${id}/pay`;
-            method = 'put';
-        }
+        let title = 'Pagar Titulo';
+        let url = `{{ url('/finance') }}/${id}/pay`;
+        let method = 'put';
 
         document.querySelector('#form-modal-title').textContent = title;
         formModal.show();
@@ -226,7 +231,7 @@
         alertModal.show();
     }
 
-    function saveFinance(form) {
+    function saveFinance(form, pg = false) {
         let formData = new FormData(form);
         let url = `{{ url('/finance') }}`;
         let method = 'post';
@@ -234,6 +239,10 @@
         if (formData.get('id').trim().length > 0) {
             url = `{{ url('/finance') }}/` + formData.get('id'); 
             method = 'put';
+        }
+debugger
+        if (pg) {
+            url = `{{ url('/finance') }}/` + formData.get('id')/'pay'; 
         }
 
         axios({
