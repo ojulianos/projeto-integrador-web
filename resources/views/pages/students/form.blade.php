@@ -81,7 +81,6 @@
                     name="cpf"
                     placeholder="Digite o CPF"
                     value="{{ $student->cpf }}"
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                     required />
             </div>
             <div class="mb-4">
@@ -129,6 +128,7 @@
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ $student->phone_2 }}"
                     name="phone_2"
+                    id="phone_2"
                     placeholder="Digite o Telefone"
                     required />
             </div>
@@ -218,12 +218,19 @@
             </div>
             <div class="mb-4">
                 <label for="uniform_size" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tamanho do uniforme</label>
-                <input type="text" 
+                <select type="text" 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ $student->uniform_size }}"
                     name="uniform_size"
-                    placeholder="Digite o tamanho do uniforme"
-                    required />
+                    required>
+                    <option value="">Tamanho do Uniforme</option>
+                    <option value="PP" {{ $student->uniform_size == 'PP' ? 'selected' : ''  }}>PP</option>
+                    <option value="P"  {{ $student->uniform_size == 'P'  ? 'selected' : ''  }}>P</option>
+                    <option value="M"  {{ $student->uniform_size == 'M'  ? 'selected' : ''  }}>M</option>
+                    <option value="G"  {{ $student->uniform_size == 'G'  ? 'selected' : ''  }}>G</option>
+                    <option value="GG" {{ $student->uniform_size == 'GG' ? 'selected' : ''  }}> GG</option>
+                    <option value="XG" {{ $student->uniform_size == 'XG' ? 'selected' : ''  }}>XG</option>
+                </select>
             </div>
         </div>
         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="responsible-tab-content" role="tabpanel" aria-labelledby="responsible-tab">
@@ -251,6 +258,7 @@
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ $student->phone_responsible }}"
                     name="phone_responsible"
+                    id="phone_responsible"
                     placeholder="Digite o telefone do responsavel"
                     required />
             </div>

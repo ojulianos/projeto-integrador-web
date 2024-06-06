@@ -139,6 +139,7 @@
                 spinner.classList.add('hidden');
                 preventSubmit(method);
                 initTabs();
+                CarregarMascara();
             });
         }
 
@@ -198,9 +199,17 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var phoneInput = document.getElementById('phone_1');
-            Inputmask("(99) 99999-9999").mask(phoneInput);
-        });
+        function CarregarMascara(){
+            const phone_1 = document.getElementById('phone_1');
+            const phone_2 = document.getElementById('phone_2');
+            const phone_responsible = document.getElementById('phone_responsible');
+            
+            const maskOptions = {
+              mask: '(00)00000-0000'
+            };
+            const mask_phone1 = IMask(phone_1, maskOptions);
+            const mask_phnoe2 = IMask(phone_2, maskOptions);
+            const mask_phone3 = IMask(phone_responsible, maskOptions);
+        }
     </script>
 </x-app-layout>
