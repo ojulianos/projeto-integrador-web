@@ -169,7 +169,7 @@
             let form = document.getElementById('formFinance');
             form.addEventListener('submit', function (ev) {
                 ev.preventDefault();
-                saveFinance(form, method);
+                saveFinance(form);
             });
         } else {
             removeAllListeners('#paymentFinance');
@@ -219,7 +219,7 @@
             console.log(error);
         }).finally(() => {
             spinner.classList.add('hidden');
-            preventSubmit(method);
+            preventSubmit(method,true);
         });
     }
 
@@ -235,14 +235,14 @@
         let formData = new FormData(form);
         let url = `{{ url('/finance') }}`;
         let method = 'post';
-        
-        if (formData.get('id').trim().length > 0) {
-            url = `{{ url('/finance') }}/` + formData.get('id'); 
+        if (!pg){
+            if (formData.get('id').trim().length > 0) {
+                url = `{{ url('/finance') }}/` + formData.get('id'); 
+                method = 'put';
+            }
+        } else {
             method = 'put';
-        }
-debugger
-        if (pg) {
-            url = `{{ url('/finance') }}/` + formData.get('id')/'pay'; 
+            url = `{{ url('/finance') }}/` + formData.get('id')+'/pay'; 
         }
 
         axios({
