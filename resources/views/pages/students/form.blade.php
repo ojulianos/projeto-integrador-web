@@ -27,7 +27,7 @@
                     aria-selected="false"
                     
                     >Dados relevantes   
-                </button><!--Não sei oq colar kkkkkkkkkk-->
+                </button>
             </li>
             <li class="me-2" 
                 role="presentation">
@@ -119,6 +119,7 @@
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ $student->phone_1 }}"
                     name="phone_1"
+                    id="phone_1"
                     placeholder="Digite o telefone"
                     required />
             </div>
@@ -151,41 +152,37 @@
             </div>
         </div>
         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="info-tab-content" role="tabpanel" aria-labelledby="info-tab">
-            <div class="mb-4">
-                <label for="position_1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Primeira posição</label>
-                <input type="text" 
+        <div class="mb-4">
+                <label for="position_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segunda posição</label>
+                <select 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{ $student->position_1 }}"
-                    name="position_1"
-                    placeholder="Digite a posição"
-                    required />
+                    name="position_2"
+                    required>
+                    <option value="">Selecione a posição</option>
+                    <option value="Goleiro"  {{ $student->position_1 == 'Goleiro'  ? 'selected' : ''  }}>Goleiro</option>
+                    <option value="Lateral"  {{ $student->position_1 == 'Lateral'  ? 'selected' : ''  }}>Lateral</option>
+                    <option value="Zagueiro" {{ $student->position_1 == 'Zagueiro' ? 'selected' : ''  }}>Zagueiro</option>
+                    <option value="Volante"  {{ $student->position_1 == 'Volante'  ? 'selected' : ''  }}>Volante</option>
+                    <option value="Meia"     {{ $student->position_1 == 'Meia'     ? 'selected' : ''  }}>Meia</option>
+                    <option value="Ponta"    {{ $student->position_1 == 'Ponta'    ? 'selected' : ''  }}>Ponta</option>
+                    <option value="Atacante" {{ $student->position_1 == 'Atacante' ? 'selected' : ''  }}>Atacante</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label for="position_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segunda posição</label>
-                <input type="text" 
+                <select 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{ $student->position_2 }}"
                     name="position_2"
-                    placeholder="Digite a posição"
-                    required />
-            </div>
-            <div class="mb-4">
-                <label for="position_3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Terceira posição</label>
-                <input type="text" 
-                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{ $student->position_3 }}"
-                    name="position_3"
-                    placeholder="Digite a posição"
-                    required />
-            </div>
-            <div class="mb-4">
-                <label for="position_4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quarta posição</label>
-                <input type="text" 
-                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{ $student->position_4 }}"
-                    name="position_4"
-                    placeholder="Digite a posição"
-                    required />
+                    required>
+                    <option value="">Selecione a posição</option>
+                    <option value="Goleiro"  {{ $student->position_2 == 'Goleiro'  ? 'selected' : ''  }}>Goleiro</option>
+                    <option value="Lateral"  {{ $student->position_2 == 'Lateral'  ? 'selected' : ''  }}>Lateral</option>
+                    <option value="Zagueiro" {{ $student->position_2 == 'Zagueiro' ? 'selected' : ''  }}>Zagueiro</option>
+                    <option value="Volante"  {{ $student->position_2 == 'Volante'  ? 'selected' : ''  }}>Volante</option>
+                    <option value="Meia"     {{ $student->position_2 == 'Meia'     ? 'selected' : ''  }}>Meia</option>
+                    <option value="Ponta"    {{ $student->position_2 == 'Ponta'    ? 'selected' : ''  }}>Ponta</option>
+                    <option value="Atacante" {{ $student->position_2 == 'Atacante' ? 'selected' : ''  }}>Atacante</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label for="attachements" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Anexos</label>
@@ -199,21 +196,25 @@
             </div>
             <div class="mb-4">
                 <label for="kick" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chute</label>
-                <input type="text" 
+                <select type="text" 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{ $student->kick }}"
                     name="kick"
-                    placeholder="Digite o chute"
-                    required />
+                    required>
+                    <option value="">Selecione a melhor perna</option>
+                    <option value="Direita"  {{ $student->kick == 'Direita'  ? 'selected' : ''  }}>Direita</option>
+                    <option value="Esquerda" {{ $student->kick == 'Esquerda' ? 'selected' : ''  }}>Esquerda</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label for="uniform" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Uniforme</label>
-                <input type="text" 
+                <select type="text" 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{ $student->uniform }}"
                     name="uniform"
-                    placeholder="Digite qual o uniforme"
-                    required />
+                    required>
+                    <option value="">Utiliza Uniforme</option>
+                    <option value="Sim" {{ $student->uniform == 'Sim'  ? 'selected' : ''  }}>Sim</option>
+                    <option value="Não" {{ $student->uniform == 'Não' ? 'selected' : ''   }}>Não</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label for="uniform_size" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tamanho do uniforme</label>
