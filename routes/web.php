@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('finance', FinancialController::class);
+    Route::get ('finance/{id}/pay', [FinancialController::class,'pay']);
     Route::resource('event', EventController::class);
     Route::resource('category', CategoryController::class);
     Route::get('/relatorio/alunos_x_categoria', [CategoryController::class, 'relatorio_aluno_categoria']);
