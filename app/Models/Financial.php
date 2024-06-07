@@ -22,16 +22,15 @@ class Financial extends Model
     
     protected $table = 'finances';
 
-    public function setDiscountValueAttribute($value)
-    {
-        $this->attributes['discount_value'] = $value !== null ? $value : '0';
-    }
+    // public function setAdditionValueAttribute($value)
+    // {
+    //     $this->attributes['addition_value'] = $value !== null ? $value : '50';
+    // }
 
-    public function setAdditionalValueAttribute($value)
-    {
-        $this->attributes['additional_value'] = $value !== null ? $value : '0';
-    }
-    
+    // public function setDiscountValueAttribute($value)
+    // {
+    //     $this->attributes['discount_value'] = $value !== null ? $value : '100';
+    // }
 
     public function getDateEmissionAttribute($value)
     {

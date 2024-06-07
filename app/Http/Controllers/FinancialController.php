@@ -38,10 +38,8 @@ class FinancialController extends Controller
             $finances = $finances->where('date_maturiry', '<=', $dt_fim);
         }
 
-
         $finances = $finances ->paginate(20);
 
-        // dd(request());
         return view('pages.finances.list',[
             'finances' => $finances
         ]);
