@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -51,6 +52,9 @@ class StudentController extends Controller
 
         if ($this->students->create($student)) {
             return response(['message' => 'Estudante cadastrado', 'status' => true]);
+            $path = Storage::putFileAs(
+                'avatars', $request->file('avatar'), $request->student()->id
+            );
         }
         return response(['message' => 'Estudante não cadastrado', 'status' => false]);
     }
