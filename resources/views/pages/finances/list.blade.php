@@ -121,7 +121,8 @@
                     {{ date('d/m/Y', strtotime($finance->date_maturiry)) }}
                 </td>
                 <td class="p-4 text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ date('d/m/Y', strtotime($finance->date_payment)) }}
+                    {{-- {{ date('d/m/Y', strtotime($finance->date_payment)) }} --}}
+                    {{ $finance->date_payment ? date('d/m/Y', strtotime($finance->date_payment)) : '' }}
                 </td>
                 <td class="p-4 text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <button 

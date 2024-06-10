@@ -17,7 +17,7 @@ class Financial extends Model
         'addition_value' ,
         'date_maturiry',
         'date_emission' ,
-        'date_payment', 
+        'date_payment'
     ];
     
     protected $table = 'finances';
@@ -44,8 +44,8 @@ class Financial extends Model
 
     public function getDatePaymentAttribute($value)
     {
-        return $value ? date('Y-m-d', strtotime($value)) : '';
-    }
+        return $value ? date('Y-m-d', strtotime($value)) : null;
+    }    
 
     public function getTypeFinancialAttribute()
     {

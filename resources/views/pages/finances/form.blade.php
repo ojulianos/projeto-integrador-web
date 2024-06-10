@@ -47,7 +47,7 @@
             id="addition_value"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="00,00"
-            value="{{ $finance->addition_value ?? 0.00}}"
+            value="{{ $finance->addition_value }}"
             name="addition_value"
             />
     </div>
@@ -70,7 +70,7 @@
             name="date_emission"
         />
     </div>
-    <div class="mb-4">
+    {{-- <div class="mb-4">
         <label for="date_payment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data Pagamento</label>
         <input type="date"
             id="date_payment"
@@ -78,7 +78,7 @@
             value="{{ old('date_emission', $finance->date_payment ?? '') }}"
             name="date_payment"
             />
-    </div>
+    </div> --}}
    
     <input type="hidden" name="id" value="{{ $finance->id }}">
     <button type="submit"
