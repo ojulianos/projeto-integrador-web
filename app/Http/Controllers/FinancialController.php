@@ -22,6 +22,8 @@ class FinancialController extends Controller
     {
         $dt_inicio = request('date_initial');
         $dt_fim = request('date_final');
+        $dt_emi_inicio = request('date_emission_initial');
+        $dt_emi_fim = request('date_emission_final');
         $finances = $this->finances;
 
         if (
@@ -36,6 +38,14 @@ class FinancialController extends Controller
     
         if (!empty($dt_fim)) {
             $finances = $finances->where('date_maturiry', '<=', $dt_fim);
+        }
+
+        if (!empty($dt_emi_inicio)) {
+            $finances = $finances->where('date_emission', '>=', $dt_emi_inicio);
+        }
+    
+        if (!empty($dt_emi_fim)) {
+            $finances = $finances->where('date_emission', '<=', $dt_emi_fim);
         }
 
         $finances = $finances ->paginate(20);
