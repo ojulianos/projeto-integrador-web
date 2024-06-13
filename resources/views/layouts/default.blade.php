@@ -13,10 +13,10 @@
 
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="{{ env('DB_USERNAME') != 'root' ? 'https://crm.bpm.com.br/csssomos/app.css' : asset('css/app.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?d={{ date('dmyhis') }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}?d={{ date('dmyhis') }}" defer></script>
 </head>
 
 <meta name="msapplication-TileColor" content="#ffffff">
