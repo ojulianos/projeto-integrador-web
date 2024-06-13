@@ -22,8 +22,20 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categorias = $this->categories;
+
+        if (request('tipo')) {
+            $categorias = $categorias->where('tipo', request('tipo'));
+        }
+
+        if (!empty(request('data_inicio')) && !empty(request('data_final'))) {
+            $categorias = $categorias->whereBetween('data', [request('data_inicio'). request('data_final')]);
+        }
+
+        $categorias = $categorias->paginate(20);
+
         return view('pages.categories.list', [
-            'categories' => $this->categories->paginate(20)
+            'categories' => $categorias
         ]);
     }
 

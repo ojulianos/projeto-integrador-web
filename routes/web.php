@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put ('finance/{id}/pay', [FinancialController::class,'payPut']);
     Route::resource('event', EventController::class);
     Route::resource('category', CategoryController::class);
-    Route::get('/relatorio/alunos_x_categoria', [CategoryController::class, 'relatorio_aluno_categoria']);
+    Route::get('/relatorio/alunos_x_categoria', [CategoryController::class, 'relatorio_aluno_categoria'])->name('relatorio_aluno_categoria');
 
     Route::resource('schedule', ScheduleController::class);
     Route::resource('presence', PresenceController::class);

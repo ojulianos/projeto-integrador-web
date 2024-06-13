@@ -17,8 +17,8 @@ class CategoryFactory extends Factory
         return [
             'name' => Str::random(10),
             'description' =>Str::random(25),
-            'age_max' => random_int(10,18), // password
-            'age_min' => random_int(1,9),
+            'age_max' => random_int(6,18), // password
+            'age_min' => random_int(1,17),
         ];
     }
 }

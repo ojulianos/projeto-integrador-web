@@ -161,12 +161,14 @@
                 method = 'put';
             }
 
+            const selectedFile = formData.elements.imageFile.files[0];
+            formData.append('picture', file);
             axios({
                 method: method,
                 url: url,
                 data: formToString(formData),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'multipart/form-data'
                 }
             }).then((response) => {
                 alert(response.data.message);

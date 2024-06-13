@@ -1,64 +1,88 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Presenças
-        </h2>
+        Presenças
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-
-
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3" width="30%">
-                                        Confirmado
-                                    </th>
-                                    <th scope="col" class="px-6 py-3" width="20%">
-                                        Agenda
-                                    </th>
-                                    <th scope="col" class="px-6 py-3" width="10%">
-                                        Estudante
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-center" width="15%">
-                                        <button 
-                                            type="button"
-                                            onclick="formPresence()"
-                                            class="border border-gray-200 px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 inline-flex items-center">
-                                            Nova presença
-                                        </button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($presences as $presence)
-                                <tr class="bg-white border-b">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        {{ $presence->confirmed }}
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        {{ $presence->schedule_class_id }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $presence->student_id }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <x-custom.edit-button :functionName="'formPresence'" :itemId=$presence />
-                                        <x-custom.delete-button :functionName="'deletePresence'" :itemId=$presence />
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table> 
-                    
-                        {{ $presences->links() }}
-                </div>
+    
+    <div class="p-4">
+        <form class="flex flex-wrap items-end space-x-4" action="?buscarAlunos">
+            <div class="flex-1">
+                <label for="aula" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agenda</label>
+                <select id="aula"
+                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    name="aula"
+                    required>
+                    <option value="">Selecione uma Aula</option>
+                    @foreach ($classes as $class)
+                    <option value="{{ $class->id }}" {{ request()->dataAula == $class->id ? 'selected' : '' }} >{{ $class->title }}</option>
+                    @endforeach
+                </select>
             </div>
-        </div>
+
+            <div class="flex-1">
+                <label for="dataAula" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data da Aula</label>
+                <input type="date"
+                id="dataAula"
+                class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                value="{{ request()->dataAula ?? '' }}"
+                name="dataAula"
+            />
+            </div>
+    
+            <div class="flex-1">
+                <button type="submit"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg focus:ring-4 focus:bg-green-800 dark:focus:bg-green-800 ">
+                    Buscar
+                </button>
+            </div>
+        </form>
     </div>
+
+
+    <table class="min-w-full divide-y divide-gray-600 table-fixed dark:divide-gray-600">
+        @if (!$presences)
+        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+            <td scope="row" class="p-4 text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <h1>Por Favor selecione uma data e uma aula/agenda</h1>
+            </td>
+        </tr>
+        @else
+        <thead class="bg-gray-100 dark:bg-gray-700">
+            <tr>
+                <th colspan="2" class="p-4 text-center text-gray-500 uppercase dark:text-gray-400">xxx</th>
+            </tr>
+            <tr>
+                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400" width="75%">
+                    Confirmado
+                </th>
+                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400" width="25%">
+                    Aluno
+                </th>
+                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400" width="25%">
+                    Aula / Agenda
+                </th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+            @foreach ($presences as $aluno)
+            <tr class=" hover:bg-gray-100 dark:hover:bg-gray-700">
+                <th scope="row" class="p-4 text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $presence->confirmed }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ $presence->schedule_class_id }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $presence->student_id }}
+                </td>
+                <td class="px-6 py-4">
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+        @endif
+    </table>
 
     <x-form-modal></x-form-modal>
 

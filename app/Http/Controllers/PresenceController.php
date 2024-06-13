@@ -26,8 +26,18 @@ class PresenceController extends Controller
      */
     public function index()
     {
+        // id	confirmed	schedule_class_id	student_id	created_at	updated_at	
+        $presences = [];
+        if (!empty(request('dataAula')) && !empty(request('aula'))) {
+            $presences = $this->presences
+                            ->where('schedule_class_id', request('aula'))
+                            ->where('created_at', request('dataAula'))
+                            ->all();
+        }
+        
         return view('pages.presences.list', [
-            'presences' => $this->presences->paginate(20)
+            'presences' => $presences,
+            'classes' => $this->classes->all(),
         ]);
     }
 
