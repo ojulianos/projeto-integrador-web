@@ -27,7 +27,7 @@ class Category extends Model
     public function relatorioAlunos($min, $max, $categoria)
     {
         return DB::select(
-            "SELECT name, '{$categoria}' as categoria FROM students WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) BETWEEN ? AND ? "
+            "SELECT name, surname, '{$categoria}' as categoria FROM students WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) BETWEEN ? AND ? "
             , [$min, $max]
         );
     }

@@ -21,9 +21,9 @@ const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
 if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
         '(prefers-color-scheme: dark)').matches)) {
-    themeToggleLightIcon.classList.remove('hidden');
+    themeToggleLightIcon ? themeToggleLightIcon.classList.remove('hidden') : null;
 } else {
-    themeToggleDarkIcon.classList.remove('hidden');
+    themeToggleDarkIcon ? themeToggleDarkIcon.classList.remove('hidden') : null;
 }
 
 
@@ -32,7 +32,7 @@ if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localS
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ env('DB_USERNAME') != 'root' ? 'https://crm.bpm.com.br/csssomos/app.css' : asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ env('DB_USERNAME') != 'root' ? 'https://ehfutebol.com.br/trabalho/app.css' : asset('css/app.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

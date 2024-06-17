@@ -17,21 +17,20 @@ class Financial extends Model
         'addition_value' ,
         'date_maturiry',
         'date_emission' ,
-        'date_payment', 
+        'date_payment'
     ];
     
     protected $table = 'finances';
 
-    public function setDiscountValueAttribute($value)
-    {
-        $this->attributes['discount_value'] = $value !== null ? $value : '0';
-    }
+    // public function setAdditionValueAttribute($value)
+    // {
+    //     $this->attributes['addition_value'] = $value !== null ? $value : '50';
+    // }
 
-    public function setAdditionalValueAttribute($value)
-    {
-        $this->attributes['additional_value'] = $value !== null ? $value : '0';
-    }
-    
+    // public function setDiscountValueAttribute($value)
+    // {
+    //     $this->attributes['discount_value'] = $value !== null ? $value : '100';
+    // }
 
     public function getDateEmissionAttribute($value)
     {
@@ -45,8 +44,8 @@ class Financial extends Model
 
     public function getDatePaymentAttribute($value)
     {
-        return $value ? date('Y-m-d', strtotime($value)) : '';
-    }
+        return $value ? date('Y-m-d', strtotime($value)) : null;
+    }    
 
     public function getTypeFinancialAttribute()
     {

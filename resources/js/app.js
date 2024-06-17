@@ -2,6 +2,7 @@ require('./bootstrap');
 import 'flowbite';
 import Alpine from 'alpinejs';
 import { Modal } from 'flowbite';
+import IMask from 'imask';
 
 
 window.Alpine = Alpine;

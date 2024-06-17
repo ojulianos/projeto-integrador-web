@@ -54,6 +54,7 @@ class StudentController extends Controller
         );
 
         if ($this->students->create($student)) {
+
             return response(['message' => 'Estudante cadastrado', 'status' => true]);
         }
         return response(['message' => 'Estudante não cadastrado', 'status' => false]);
