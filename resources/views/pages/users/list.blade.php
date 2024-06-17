@@ -115,6 +115,8 @@
             }).finally(() => {
                 spinner.classList.add('hidden');
                 preventSubmit(method);
+                initTabs();
+                CarregarMascara();
             });
         }
 
@@ -172,6 +174,15 @@
             .finally(function () {
                 spinner.classList.add('hidden');
             });
+        }
+
+        function CarregarMascara(){
+            const phone = document.getElementById('phone');
+            
+            const maskOptions = {
+              mask: '(00)00000-0000'
+            };
+            const mask_phone = IMask(phone, maskOptions);
         }
     </script>
 </x-app-layout>

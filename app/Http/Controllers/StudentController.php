@@ -49,12 +49,12 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
         $student = $request->all();
+        $path = Storage::putFileAs(
+            'avatars', $request->file('avatar'), $request->student()->id
+        );
 
         if ($this->students->create($student)) {
             return response(['message' => 'Estudante cadastrado', 'status' => true]);
-            $path = Storage::putFileAs(
-                'avatars', $request->file('avatar'), $request->student()->id
-            );
         }
         return response(['message' => 'Estudante não cadastrado', 'status' => false]);
     }
