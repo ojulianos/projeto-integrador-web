@@ -21,9 +21,9 @@ const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
 if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
         '(prefers-color-scheme: dark)').matches)) {
-    themeToggleLightIcon.classList.remove('hidden');
+    themeToggleLightIcon ? themeToggleLightIcon.classList.remove('hidden') : null;
 } else {
-    themeToggleDarkIcon.classList.remove('hidden');
+    themeToggleDarkIcon ? themeToggleDarkIcon.classList.remove('hidden') : null;
 }
 
 

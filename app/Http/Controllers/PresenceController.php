@@ -26,13 +26,10 @@ class PresenceController extends Controller
      */
     public function index()
     {
-        // id	confirmed	schedule_class_id	student_id	created_at	updated_at	
         $presences = [];
         if (!empty(request('dataAula')) && !empty(request('aula'))) {
             $presences = $this->presences
-                            ->where('schedule_class_id', request('aula'))
-                            ->where('created_at', request('dataAula'))
-                            ->all();
+                            ->getPresencesByDate(request('aula'), request('dataAula'));
         }
         
         return view('pages.presences.list', [
@@ -48,12 +45,7 @@ class PresenceController extends Controller
      */
     public function create()
     {
-        return view('pages.presences.form', [
-            'presences' => $this->presences,
-            'students' => $this->students->all(),
-            'classes' => $this->classes->all(),
-            'form_action' => route('presence.store')
-        ]);
+        return abort(404);
     }
     /**
      * Store a newly created resource in storage.
@@ -63,12 +55,41 @@ class PresenceController extends Controller
      */
     public function store(PresenceRequest $request)
     {
-        $presence = $request->all();
+        $schedule_class_id = request('schedule_class_id');
+        $presence_date = request('created_at');
+        $student_insert = [];
+        $student_delete = [];
 
-        if ($this->presences->create($presence)) {
-            return response(['message' => 'Presença cadastrada', 'status' => true]);
+        foreach (request()->all() as $key => $value) {
+            if (str_contains($key, 'confirmed') or str_contains($key, 'deleted')) {
+                $item_data = explode('[', $key);
+                $val_data = substr($item_data[1], 0, strlen($item_data[1]) - 1);
+                
+                if (str_contains($key, 'confirmed') and (mb_strtolower($value) == 'null' or is_null($value))) {
+                    $student_insert[] = request("student_id[{$val_data}]");
+                }
+
+                if (str_contains($key, 'deleted') and (mb_strtolower($value) != 'null' or !is_null($value))) {
+                    $student_delete[] = $value;
+                }
+            }
         }
-        return response(['message' => 'Presença não cadastrada', 'status' => false]);
+
+        foreach ($student_insert as $student) {
+            $presence = [
+                'schedule_class_id' => $schedule_class_id,
+                'presence_date' => $presence_date,
+                'confirmed' => 'Y',
+                'student_id' => $student,
+            ];
+            $this->presences->create($presence);
+        }
+
+        foreach ($student_delete as $student) {
+            $this->presences->find($student)->delete();
+        }
+
+        return response(['message' => 'Presenças Cadastradas', 'status' => true]);
     }
 
     /**
@@ -79,10 +100,7 @@ class PresenceController extends Controller
      */
     public function show($id)
     {
-        return view('pages.presences.form', [
-            'presence' => $this->presences->find($id),
-            'form_action' => route('presence.store')
-        ]);
+        return abort(404);
     }
 
     /**
@@ -93,12 +111,7 @@ class PresenceController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.presences.form', [
-            'presence' => $this->presences->find($id),
-            'students' => $this->students->all(),
-            'classes' => $this->classes->all(),
-            'form_action' => route('presence.store')
-        ]);
+        return abort(404);
         
     }
 
@@ -111,12 +124,7 @@ class PresenceController extends Controller
      */
     public function update(PresenceRequest $request, $id)
     {
-        $presence = $this->presences->find($id);
-        
-        if ($presence->save()) {
-            return response(['message' => 'Presença atualizada', 'status' => true]);
-        }
-        return response(['message' => 'Presença não atualizada', 'status' => false]);
+        return abort(404);
     }
 
     /**
@@ -127,10 +135,6 @@ class PresenceController extends Controller
      */
     public function destroy($id)
     {
-        $presence = $this->presences->find($id);
-
-        if ($presence->delete()) {
-            return response(['message' => 'Presença excluída', 'status' => true]);
-        }
+        return abort(404);
     }
 }
