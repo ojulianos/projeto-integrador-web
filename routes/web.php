@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
@@ -11,13 +12,8 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 
-Route::get('/template', function () {
-    return view('default');
-});
-
-
-Route::get('/', function () {
-    return redirect('login');
+Route::get('/', function(){
+    return 'clique aqui';
 });
 
 Route::middleware(['auth'])->group(function () {
