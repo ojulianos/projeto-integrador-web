@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('schedule', ScheduleController::class);
     Route::resource('presence', PresenceController::class);
     Route::resource('student', StudentController::class);
+    Route::get('/relatorio/alunos_x_posicao', [StudentController::class, 'relatorio_aluno_Posicao'])->name('relatorio_aluno_Posicao');
     Route::resource('user', UserController::class);
 
     Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');

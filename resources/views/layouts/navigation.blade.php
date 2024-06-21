@@ -176,6 +176,13 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{ route('relatorio_aluno_Posicao') }}" active="{{ request()->routeIs('relatorio_aluno_Posicao') }}"
+                                class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 {{ request()->routeIs('user.index') ? 'bg-gray-100 dark:bg-gray-700' : '' }}">
+                                Relatorio Aluno x Posição
+                            </a>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>

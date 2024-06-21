@@ -117,4 +117,15 @@ class StudentController extends Controller
         }
         return response(['message' => 'Estudante não excluído', 'status' => false]);
     }
+
+    public function relatorio_aluno_Posicao(Request $request)
+    {
+        $alunos = [];
+        $posicao = $request->posicao;
+
+        if ($posicao){
+            $alunos = (new Student())->relatorioAlunosPosicao($request->posicao);
+        }        
+        return view('relatorios.alunos_x_posicao', ['alunos' => $alunos, 'posicao' => $posicao]);
+    }
 }
