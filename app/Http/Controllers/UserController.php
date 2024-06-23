@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -43,10 +43,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\UserRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         $user = $request->all();
         $user['password'] = bcrypt($request->password);
@@ -87,15 +87,21 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UserRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $user = $this->users->find($id);
         
         foreach ($request->except('_token') as $key => $value) {
+            if ($key == 'password' and empty(trim($value))) {
+                continue;
+            }
+            if (empty(trim($value))) {
+                continue;
+            }
             $user->$key = $value;
         }
 
@@ -123,5 +129,13 @@ class UserController extends Controller
             return response(['message' => 'Usuário excluído', 'status' => true]);
         }
         return response(['message' => 'Usuário não excluído', 'status' => false]);
+    }
+
+    public function profile() {
+        // return('data');
+
+        return view('pages.users.profile', [
+            'user' => Auth::user()
+        ]);
     }
 }

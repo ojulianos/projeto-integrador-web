@@ -1,4 +1,10 @@
-<form class="mx-auto" action="{{ $form_action }}" method="POST" enctype="multipart/form-data" id="formUser">
+<x-app-layout>
+    <x-slot name="header">
+            Perfil do Usuário
+    </x-slot>
+
+
+    <form class="mx-auto" action="{{ url('/user') }}/{{ $user->id }}/edit" method="POST" enctype="multipart/form-data" id="formUser">
     @csrf
 
     <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
@@ -50,8 +56,8 @@
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Digite o Email"
                     value="{{ $user->email }}"
-                    name="email"
-                    required />
+                    readonly
+                     />
             </div>
             <div class="mb-4">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Senha</label>
@@ -59,7 +65,7 @@
                     id="password"
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="password"
-                    />
+                     />
             </div>
             <div class="mb-4">
                 <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de Nascimento</label>
@@ -91,28 +97,6 @@
                     value="{{ $user->phone }}"
                     required />
             </div>
-            <div class="mb-4">
-                <label for="permission" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de Usuário</label>
-                <select id="permission"
-                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    name="permission"
-                    required>
-                    <option selected>Selecione</option>
-                    <option value="A" {{ $user->permission == 'A' ? 'selected' : '' }}>Admin</option>
-                    <option value="P" {{ $user->permission == 'P' ? 'selected' : '' }}>Professor</option>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                <select id="status"
-                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    name="status"
-                    required>
-                    <option selected>Selecione</option>
-                    <option value="A" {{ $user->status == 'A' ? 'selected' : '' }}>Ativo</option>
-                    <option value="I" {{ $user->status == 'I' ? 'selected' : '' }}>Inativo</option>
-                </select>
-            </div>
         </div>
         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="address-tab-content" role="tabpanel" aria-labelledby="address-tab">
             <x-custom.form-address-inputs :formData=$user ></x-custom.form-address-inputs>
@@ -126,3 +110,51 @@
     </button>
 </form>
 
+
+
+
+    <script>
+
+        let form = document.getElementById('formUser');
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            saveUser(form);
+        });
+
+        function saveUser(form) {
+            let formData = new FormData(form);
+            url = `{{ url('/user') }}/` + formData.get('id'); 
+            method = 'put';
+
+            axios({
+                method: method,
+                url: url,
+                data: formToString(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                alert(response.data.message);
+                if (response.data.status) {
+                    window.location.reload();
+                }
+            }).catch((error) => {
+                let errorList = '';
+                // for (let i = 0; i < error.errors.length; i++) {
+                //     errorList += error.errors[i] + "\n";
+                // }
+                
+                console.log('Error', error.message);
+            });
+        }
+
+        function formToString(formData) {
+        var object = {};
+        formData.forEach(function(value, key){
+            object[key] = value;
+        });
+        return JSON.stringify(object);
+    }
+
+    </script>
+</x-app-layout>
