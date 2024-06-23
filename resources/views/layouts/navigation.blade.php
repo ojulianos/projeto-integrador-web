@@ -120,6 +120,7 @@
                                 Dashboard
                             </a>
                         </li>
+                        @if (Auth::user()->permission == 'A')
                         <li>
                             <a href="{{ route('student.index') }}"
                                 active="{{ request()->routeIs('student.index') }}"
@@ -134,6 +135,7 @@
                                 Categorias
                             </a>
                         </li>
+                        @endif
                         <li>
                             <a href="{{ route('presence.index') }}"
                                 active="{{ request()->routeIs('presence.index') }}"
@@ -141,6 +143,7 @@
                                 Presenças
                             </a>
                         </li>
+                        @if (Auth::user()->permission == 'A')
                         <li>
                             <a href="{{ route('schedule.index') }}"
                                 active="{{ request()->routeIs('schedule.index') }}"
@@ -182,7 +185,7 @@
                                 Relatorio Aluno x Posição
                             </a>
                         </li>
-                        
+                        @endif
                     </ul>
                 </div>
             </div>
