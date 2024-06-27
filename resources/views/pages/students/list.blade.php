@@ -108,6 +108,15 @@
 
     <x-form-modal></x-form-modal>
 
+    <script type="module"> 
+        // $(function () {
+        //     $('#datatable').DataTable({
+        //         processing: true,
+        //         serverSide: true,
+                
+        //     });
+        // });
+    </script>
     <script>
         function preventSubmit(method = 'post') {
             removeAllListeners('#formStudent');
@@ -163,10 +172,14 @@
 
             const selectedFile = formData.elements.imageFile.files[0];
             formData.append('picture', file);
+            // var attachements = document.querySelector('#attachements');
+            // formData.append("attachements", attachements.files[0]);
+
             axios({
                 method: method,
                 url: url,
                 data: formToString(formData),
+                // data: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -176,12 +189,12 @@
                     window.location.reload();
                 }
             }).catch((error) => {
+                let errorData = error.response.data;
                 let errorList = '';
-                // for (let i = 0; i < error.errors.length; i++) {
-                //     errorList += error.errors[i] + "\n";
-                // }
-                
-                console.log('Error', error.message);
+                for (let error in errorData.errors) {
+                    errorList += errorData.errors[error][0] + "<br>\n";
+                }
+                showToast(errorList);
             });
         }
 

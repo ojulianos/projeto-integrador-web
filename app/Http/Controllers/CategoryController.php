@@ -98,8 +98,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $request['data'] = json_decode($request['data']);
+
+        // Validate
+        $request->validate([
+            'data.description' => 'required|filled|size:100',
+            'data.productId' => 'required|int|exists:App\Product,id'
+        ]);
+
+
         $category = $this->categories->find($id);
         
         foreach ($request->except('_token') as $key => $value) {

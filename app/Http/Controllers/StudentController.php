@@ -128,4 +128,17 @@ class StudentController extends Controller
         }        
         return view('relatorios.alunos_x_posicao', ['alunos' => $alunos, 'posicao' => $posicao]);
     }
+
+    public function relatorio_aluno_Presenca(Request $request)
+    {
+        $alunosPresencas = [];
+        $dataIni = $request->dataIni;
+        $dataFim = $request->dataFim;
+        if($dataIni and $dataFim){
+            $alunosPresencas = (new Student())->relatorioAlunosPresenca($dataIni, $dataFim);
+        }
+        
+                
+        return view('relatorios.alunos_x_presenca', ['alunosPresencas' => $alunosPresencas]);
+    }
 }

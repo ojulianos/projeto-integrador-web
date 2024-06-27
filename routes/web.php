@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('presence', PresenceController::class);
     Route::resource('student', StudentController::class);
     Route::get('/relatorio/alunos_x_posicao', [StudentController::class, 'relatorio_aluno_Posicao'])->name('relatorio_aluno_Posicao');
+    Route::get('/relatorio/alunos_x_Presenca', [StudentController::class, 'relatorio_aluno_Presenca'])->name('relatorio_aluno_Presenca');
     Route::resource('user', UserController::class);
 
     Route::get('/profile/user', [UserController::class, 'profile'])->name('user.profile');

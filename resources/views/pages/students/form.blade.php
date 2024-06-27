@@ -55,7 +55,7 @@
                     placeholder="Digite o Nome"
                     value="{{ $student->name }}"
                     name="name"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="surname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sobrenome</label>
@@ -64,7 +64,7 @@
                     placeholder="Digite o sobrenome"
                     value="{{ $student->surname }}"
                     name="surname"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Data de nascimento</label>
@@ -72,7 +72,7 @@
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ $student->birth_date }}"
                     name="birth_date"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="cpf" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CPF</label>
@@ -81,7 +81,7 @@
                     name="cpf"
                     placeholder="Digite o CPF"
                     value="{{ $student->cpf }}"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="rg" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RG</label>
@@ -90,7 +90,7 @@
                     name="rg"
                     placeholder="Digite o RG"
                     value="{{ $student->rg }}"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="alergy" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alergia</label>
@@ -99,7 +99,7 @@
                     placeholder="Alergias do estudante..."
                     name="alergy"
                     value="{{ $student->alergy }}"
-                    required>
+                    >
                 </textarea>
             </div>
             <div class="mb-4">
@@ -109,7 +109,7 @@
                     placeholder="Medicações do estudante..."
                     name="medications"
                     value="{{ $student->medications }}"
-                    required>
+                    >
                 </textarea>
             </div>
             <div class="mb-4">
@@ -120,7 +120,7 @@
                     name="phone_1"
                     id="phone_1"
                     placeholder="Digite o telefone"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="phone_2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segundo telefone</label>
@@ -130,7 +130,7 @@
                     name="phone_2"
                     id="phone_2"
                     placeholder="Digite o Telefone"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Endereço</label>
@@ -139,7 +139,7 @@
                     value="{{ $student->address }}"
                     name="address"
                     placeholder="Digite o endereço"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="picture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
@@ -147,7 +147,8 @@
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     value="{{ $student->picture }}"
                     name="picture"
-                    required />
+                    id="picture-student"
+                     />
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="attachements_input_help">SVG, PNG ou JPG.</p>
             </div>
         </div>
@@ -157,7 +158,7 @@
                 <select 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="position_2"
-                    required>
+                    >
                     <option value="">Selecione a posição</option>
                     <option value="Goleiro"  {{ $student->position_1 == 'Goleiro'  ? 'selected' : ''  }}>Goleiro</option>
                     <option value="Lateral"  {{ $student->position_1 == 'Lateral'  ? 'selected' : ''  }}>Lateral</option>
@@ -173,7 +174,7 @@
                 <select 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="position_2"
-                    required>
+                    >
                     <option value="">Selecione a posição</option>
                     <option value="Goleiro"  {{ $student->position_2 == 'Goleiro'  ? 'selected' : ''  }}>Goleiro</option>
                     <option value="Lateral"  {{ $student->position_2 == 'Lateral'  ? 'selected' : ''  }}>Lateral</option>
@@ -190,7 +191,7 @@
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     value="{{ $student->attachements }}"
                     name="attachements"
-                    required
+                    id="attachements"
                     multiple />
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="attachements_input_help">SVG, PNG ou JPG.</p>
             </div>
@@ -199,7 +200,7 @@
                 <select type="text" 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="kick"
-                    required>
+                    >
                     <option value="">Selecione a melhor perna</option>
                     <option value="Direita"  {{ $student->kick == 'Direita'  ? 'selected' : ''  }}>Direita</option>
                     <option value="Esquerda" {{ $student->kick == 'Esquerda' ? 'selected' : ''  }}>Esquerda</option>
@@ -210,7 +211,7 @@
                 <select type="text" 
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     name="uniform"
-                    required>
+                    >
                     <option value="">Utiliza Uniforme</option>
                     <option value="Sim" {{ $student->uniform == 'Sim'  ? 'selected' : ''  }}>Sim</option>
                     <option value="Não" {{ $student->uniform == 'Não' ? 'selected' : ''   }}>Não</option>
@@ -222,7 +223,7 @@
                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ $student->uniform_size }}"
                     name="uniform_size"
-                    required>
+                    >
                     <option value="">Tamanho do Uniforme</option>
                     <option value="PP" {{ $student->uniform_size == 'PP' ? 'selected' : ''  }}>PP</option>
                     <option value="P"  {{ $student->uniform_size == 'P'  ? 'selected' : ''  }}>P</option>
@@ -241,7 +242,7 @@
                     value="{{ $student->cpf_responsible }}"
                     name="cpf_responsible"
                     placeholder="Digite o CPF do responsavel"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="name_responsible" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome do responsavel</label>
@@ -250,7 +251,7 @@
                     value="{{ $student->name_responsible }}"
                     name="name_responsible"
                     placeholder="Digite o nome do responsavel"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="phone_responsible" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone do responsavel</label>
@@ -260,7 +261,7 @@
                     name="phone_responsible"
                     id="phone_responsible"
                     placeholder="Digite o telefone do responsavel"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="address_responsible" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Endereço do responsavel</label>
@@ -269,7 +270,7 @@
                     value="{{ $student->address_responsible }}"
                     name="address_responsible"
                     placeholder="Digite o endereço do responsavel"
-                    required />
+                     />
             </div>
             <div class="mb-4">
                 <label for="email_responsible" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email do responsavel</label>
@@ -278,7 +279,7 @@
                     value="{{ $student->email_responsible }}"
                     name="email_responsible"
                     placeholder="Digite o email do responsavel"
-                    required />
+                     />
             </div>
         </div>
     </div>

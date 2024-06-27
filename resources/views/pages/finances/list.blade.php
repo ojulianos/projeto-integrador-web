@@ -238,7 +238,12 @@
         axios.get(url).then((response) => {
             document.querySelector('#form-modal-content').innerHTML = response.data;
         }).catch((error) => {
-            console.log(error);
+            let errorData = error.response.data;
+            let errorList = '';
+            for (let error in errorData.errors) {
+                errorList += errorData.errors[error][0] + "<br>\n";
+            }
+            showToast(errorList);
         }).finally(() => {
             spinner.classList.add('hidden');
             preventSubmit(method,true);
@@ -280,19 +285,18 @@
                 window.location.reload();
             }
         }).catch((error) => {
+            let errorData = error.response.data;
             let errorList = '';
-            // for (let i = 0; i < error.errors.length; i++) {
-            //     errorList += error.errors[i] + "\n";
-            // }
-            
-            console.log('Error', error.message);
+            for (let error in errorData.errors) {
+                errorList += errorData.errors[error][0] + "<br>\n";
+            }
+            showToast(errorList);
         });
     }
 
     function confirmDelete(id) {
         axios.delete(`{{ url('/finance') }}/${id}`)
         .then(function (response) {
-            alert(response.data.message);
             if (response.data.status) {
                 window.location.reload();
             }

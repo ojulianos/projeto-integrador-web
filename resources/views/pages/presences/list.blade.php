@@ -114,6 +114,7 @@
         </form>
     @endif
 
+    <x-form-modal></x-form-modal>
 
     <script>
         let savePresences = document.getElementById('savePresences');
@@ -131,10 +132,7 @@
                     'Content-Type': 'application/json'
                 }
             }).then((response) => {
-                alert(response.data.message);
-                if (response.data.status) {
-                    window.location.reload();
-                }
+                showToast(response.data.message, 'success');
             }).catch((error) => {
                 let errorList = '';
                 console.log('Error', error.message);
